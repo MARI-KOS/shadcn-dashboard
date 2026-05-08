@@ -14,6 +14,9 @@ import {
 } from "@/components/ui/form"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { ja } from "@/i18n/ja"
+
+const t = ja.settings.appearance
 
 const appearanceFormSchema = z.object({
   theme: z.enum(["light", "dark"]),
@@ -45,16 +48,16 @@ export default function AppearanceSettings() {
   return (
     <div className="space-y-6 px-4 lg:px-6">
         <div>
-          <h1 className="text-3xl font-bold">Appearance</h1>
+          <h1 className="text-3xl font-bold">{t.title}</h1>
           <p className="text-muted-foreground">
-            Customize the appearance of the application.
+            {t.subtitle}
           </p>
         </div>
 
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             {/* Theme Section */}
-            <h3 className="text-lg font-medium mb-2">Theme</h3>
+            <h3 className="text-lg font-medium mb-2">{t.theme}</h3>
             <FormField
               control={form.control}
               name="theme"
@@ -87,7 +90,7 @@ export default function AppearanceSettings() {
                                   </div>
                                 </div>
                               </div>
-                              <span className="text-sm font-medium">Light</span>
+                              <span className="text-sm font-medium">{t.light}</span>
                             </div>
                           </div>
                         </FormLabel>
@@ -113,7 +116,7 @@ export default function AppearanceSettings() {
                                   </div>
                                 </div>
                               </div>
-                              <span className="text-sm font-medium">Dark</span>
+                              <span className="text-sm font-medium">{t.dark}</span>
                             </div>
                           </div>
                         </FormLabel>
@@ -130,17 +133,17 @@ export default function AppearanceSettings() {
               name="fontFamily"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Font Family</FormLabel>
+                  <FormLabel>{t.fontFamily}</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="cursor-pointer">
-                        <SelectValue placeholder="Select a font" />
+                        <SelectValue placeholder={t.fontFamily} />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
                       <SelectItem value="inter">Inter</SelectItem>
                       <SelectItem value="roboto">Roboto</SelectItem>
-                      <SelectItem value="system">System Default</SelectItem>
+                      <SelectItem value="system">{t.systemDefault}</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -152,17 +155,17 @@ export default function AppearanceSettings() {
               name="fontSize"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Font Size</FormLabel>
+                  <FormLabel>{t.fontSize}</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="cursor-pointer">
-                        <SelectValue placeholder="Select font size" />
+                        <SelectValue placeholder={t.fontSize} />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="small">Small</SelectItem>
-                      <SelectItem value="medium">Medium</SelectItem>
-                      <SelectItem value="large">Large</SelectItem>
+                      <SelectItem value="small">{t.small}</SelectItem>
+                      <SelectItem value="medium">{t.medium}</SelectItem>
+                      <SelectItem value="large">{t.large}</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -176,17 +179,17 @@ export default function AppearanceSettings() {
               name="sidebarWidth"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Sidebar Width</FormLabel>
+                  <FormLabel>{t.sidebarWidth}</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="cursor-pointer">
-                        <SelectValue placeholder="Select sidebar width" />
+                        <SelectValue placeholder={t.sidebarWidth} />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="compact">Compact</SelectItem>
-                      <SelectItem value="comfortable">Comfortable</SelectItem>
-                      <SelectItem value="spacious">Spacious</SelectItem>
+                      <SelectItem value="compact">{t.compact}</SelectItem>
+                      <SelectItem value="comfortable">{t.comfortable}</SelectItem>
+                      <SelectItem value="spacious">{t.spacious}</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -198,17 +201,17 @@ export default function AppearanceSettings() {
               name="contentWidth"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Content Width</FormLabel>
+                  <FormLabel>{t.contentWidth}</FormLabel>
                   <Select onValueChange={field.onChange} defaultValue={field.value}>
                     <FormControl>
                       <SelectTrigger className="cursor-pointer">
-                        <SelectValue placeholder="Select content width" />
+                        <SelectValue placeholder={t.contentWidth} />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="fixed">Fixed</SelectItem>
-                      <SelectItem value="fluid">Fluid</SelectItem>
-                      <SelectItem value="container">Container</SelectItem>
+                      <SelectItem value="fixed">{t.fixed}</SelectItem>
+                      <SelectItem value="fluid">{t.fluid}</SelectItem>
+                      <SelectItem value="container">{t.container}</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />
@@ -218,9 +221,9 @@ export default function AppearanceSettings() {
 
             <div className="flex space-x-2 mt-12">
               <Button type="submit" className="cursor-pointer">
-                Save Preferences
+                {t.savePreferences}
               </Button>
-              <Button variant="outline" type="button" className="cursor-pointer">Cancel</Button>
+              <Button variant="outline" type="button" className="cursor-pointer">{t.cancel}</Button>
             </div>
           </form>
         </Form>

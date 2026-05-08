@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Rocket, Shield, Zap, Users, Headphones, Clock } from "lucide-react"
+import { ja } from "@/i18n/ja"
 
 // Icon mapping
 const iconMap = {
@@ -26,9 +27,9 @@ export function FeaturesGrid({ features }: FeaturesGridProps) {
   return (
     <Card>
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl">All Plans Include</CardTitle>
+        <CardTitle className="text-2xl">{ja.pricing.allPlansInclude}</CardTitle>
         <CardDescription>
-          Every plan comes with these essential features to help your team succeed
+          {ja.pricing.allPlansIncludeDesc}
         </CardDescription>
       </CardHeader>
       <CardContent>

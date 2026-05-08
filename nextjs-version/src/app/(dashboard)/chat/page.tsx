@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 
 import { Chat } from "./components/chat"
 import { type Conversation, type Message, type User } from "./use-chat"
+import { ja } from "@/i18n/ja"
 
 // Import static data
 import conversationsData from "./data/conversations.json"
@@ -36,7 +37,7 @@ export default function ChatPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="text-muted-foreground">Loading chat...</div>
+        <div className="text-muted-foreground">{ja.chat.loading}</div>
       </div>
     )
   }

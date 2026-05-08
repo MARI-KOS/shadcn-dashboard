@@ -10,6 +10,9 @@ import { ChatHeader } from "./chat-header"
 import { MessageList } from "./message-list"
 import { MessageInput } from "./message-input"
 import { useChat, type Conversation, type Message, type User } from "../use-chat"
+import { ja } from "@/i18n/ja"
+
+const t = ja.chat
 
 interface ChatProps {
   conversations: Conversation[]
@@ -116,7 +119,7 @@ export function Chat({
         `}>
           {/* Sidebar Header with Close Button (Mobile Only) */}
           <div className="lg:hidden p-4 border-b flex items-center justify-between bg-background">
-            <h2 className="text-lg font-semibold">Messages</h2>
+            <h2 className="text-lg font-semibold">{t.messages}</h2>
             <Button
               variant="ghost"
               size="sm"
@@ -172,15 +175,15 @@ export function Chat({
                 {/* Message Input */}
                 <MessageInput
                   onSendMessage={handleSendMessage}
-                  placeholder={`Message ${currentConversation?.name || ""}...`}
+                  placeholder={`${currentConversation?.name || ""}${t.messagePlaceholder}`}
                 />
               </>
             ) : (
               <div className="flex-1 flex items-center justify-center">
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold mb-2">Welcome to Chat</h3>
+                  <h3 className="text-lg font-semibold mb-2">{t.welcome}</h3>
                   <p className="text-muted-foreground">
-                    Select a conversation to start messaging
+                    {t.selectConversation}
                   </p>
                 </div>
               </div>
