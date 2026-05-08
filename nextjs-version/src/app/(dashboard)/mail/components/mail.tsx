@@ -28,6 +28,7 @@ import { Nav } from "./nav"
 import { type Mail } from "../data"
 import { useMail } from "../use-mail"
 import { Button } from "@/components/ui/button"
+import { ja } from "@/i18n/ja"
 
 interface MailProps {
   accounts: {
@@ -48,6 +49,7 @@ export function Mail({
   defaultCollapsed = false,
   navCollapsedSize,
 }: MailProps) {
+  const t = ja.mail
   const [isCollapsed, setIsCollapsed] = React.useState(defaultCollapsed);
   const [mail] = useMail();
 
@@ -87,7 +89,7 @@ export function Mail({
           <Separator className="mx-0" />
           <div className="m-3">
             <Button className="w-full cursor-pointer">
-              {isCollapsed ? "" : "Compose"}
+              {isCollapsed ? "" : t.compose}
               <Send className="size-4" />
             </Button>
           </div>
@@ -96,37 +98,37 @@ export function Mail({
             isCollapsed={isCollapsed}
             links={[
               {
-                title: "Inbox",
+                title: t.inbox,
                 label: "128",
                 icon: Inbox,
                 variant: "default",
               },
               {
-                title: "Drafts",
+                title: t.drafts,
                 label: "9",
                 icon: File,
                 variant: "ghost",
               },
               {
-                title: "Sent",
+                title: t.sent,
                 label: "",
                 icon: Send,
                 variant: "ghost",
               },
               {
-                title: "Junk",
+                title: t.junk,
                 label: "23",
                 icon: ArchiveX,
                 variant: "ghost",
               },
               {
-                title: "Trash",
+                title: t.trash,
                 label: "",
                 icon: Trash2,
                 variant: "ghost",
               },
               {
-                title: "Archive",
+                title: t.archive,
                 label: "",
                 icon: Archive,
                 variant: "ghost",
@@ -138,31 +140,31 @@ export function Mail({
             isCollapsed={isCollapsed}
             links={[
               {
-                title: "Social",
+                title: t.social,
                 label: "972",
                 icon: Users2,
                 variant: "ghost",
               },
               {
-                title: "Updates",
+                title: t.updates,
                 label: "342",
                 icon: AlertCircle,
                 variant: "ghost",
               },
               {
-                title: "Forums",
+                title: t.forums,
                 label: "128",
                 icon: MessagesSquare,
                 variant: "ghost",
               },
               {
-                title: "Shopping",
+                title: t.shopping,
                 label: "8",
                 icon: ShoppingCart,
                 variant: "ghost",
               },
               {
-                title: "Promotions",
+                title: t.promotions,
                 label: "21",
                 icon: Archive,
                 variant: "ghost",
@@ -174,10 +176,10 @@ export function Mail({
         <ResizablePanel defaultSize={defaultLayout[1]} minSize={30}>
           <Tabs defaultValue="all" className="gap-1">
             <div className="flex items-center px-4 py-1.5">
-              <h1 className="text-foreground text-xl font-bold">Inbox</h1>
+              <h1 className="text-foreground text-xl font-bold">{t.inbox}</h1>
               <TabsList className="ml-auto">
-                <TabsTrigger value="all" className="cursor-pointer">All mail</TabsTrigger>
-                <TabsTrigger value="unread" className="cursor-pointer">Unread</TabsTrigger>
+                <TabsTrigger value="all" className="cursor-pointer">{t.allMail}</TabsTrigger>
+                <TabsTrigger value="unread" className="cursor-pointer">{t.unread}</TabsTrigger>
               </TabsList>
             </div>
             <Separator />
@@ -185,7 +187,7 @@ export function Mail({
               <form>
                 <div className="relative">
                   <Search className="text-muted-foreground absolute top-2.5 left-2 size-4 cursor-pointer" />
-                  <Input placeholder="Search" className="pl-8 cursor-text" />
+                  <Input placeholder={t.search} className="pl-8 cursor-text" />
                 </div>
               </form>
             </div>

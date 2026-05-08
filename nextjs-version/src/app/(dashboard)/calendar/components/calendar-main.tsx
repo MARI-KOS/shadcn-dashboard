@@ -37,6 +37,7 @@ import {
 } from "@/components/ui/dialog"
 import { cn } from "@/lib/utils"
 import { type CalendarEvent } from "../types"
+import { ja } from "@/i18n/ja"
 
 // Import data
 import eventsData from "../data/events.json"
@@ -96,7 +97,7 @@ export function CalendarMain({ selectedDate, onDateSelect, onMenuClick, events, 
   }
 
   const renderCalendarGrid = () => {
-    const weekDays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+    const weekDays = [ja.calendar.days.sun, ja.calendar.days.mon, ja.calendar.days.tue, ja.calendar.days.wed, ja.calendar.days.thu, ja.calendar.days.fri, ja.calendar.days.sat]
 
     return (
       <div className="flex-1 bg-background">
@@ -246,7 +247,7 @@ export function CalendarMain({ selectedDate, onDateSelect, onMenuClick, events, 
               <ChevronRight className="w-4 h-4" />
             </Button>
             <Button variant="outline" size="sm" onClick={goToToday} className="cursor-pointer">
-              Today
+              {ja.calendar.today}
             </Button>
           </div>
 
@@ -259,7 +260,7 @@ export function CalendarMain({ selectedDate, onDateSelect, onMenuClick, events, 
           {/* Search */}
           <div className="relative">
             <Search className="w-4 h-4 absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground" />
-            <Input placeholder="Search events..." className="pl-10 w-64" />
+            <Input placeholder={`${ja.calendar.search}...`} className="pl-10 w-64" />
           </div>
 
           {/* View Mode Toggle */}
@@ -268,18 +269,18 @@ export function CalendarMain({ selectedDate, onDateSelect, onMenuClick, events, 
               <Button variant="outline" className="cursor-pointer">
                 {viewMode === "month" && <Grid3X3 className="w-4 h-4 mr-2" />}
                 {viewMode === "list" && <List className="w-4 h-4 mr-2" />}
-                {viewMode.charAt(0).toUpperCase() + viewMode.slice(1)}
+                {viewMode === "month" ? ja.calendar.month : ja.calendar.list}
                 <ChevronDown className="w-4 h-4 ml-2" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
               <DropdownMenuItem onClick={() => setViewMode("month")} className="cursor-pointer">
                 <Grid3X3 className="w-4 h-4 mr-2" />
-                Month
+                {ja.calendar.month}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => setViewMode("list")} className="cursor-pointer">
                 <List className="w-4 h-4 mr-2" />
-                List
+                {ja.calendar.list}
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
@@ -293,9 +294,9 @@ export function CalendarMain({ selectedDate, onDateSelect, onMenuClick, events, 
       <Dialog open={showEventDialog} onOpenChange={setShowEventDialog}>
         <DialogContent className="max-w-md">
           <DialogHeader>
-            <DialogTitle>{selectedEvent?.title || "Event Details"}</DialogTitle>
+            <DialogTitle>{selectedEvent?.title || ja.calendar.eventDetails}</DialogTitle>
             <DialogDescription>
-              View and manage this calendar event
+              {ja.calendar.eventDetails}
             </DialogDescription>
           </DialogHeader>
           {selectedEvent && (
@@ -315,7 +316,7 @@ export function CalendarMain({ selectedDate, onDateSelect, onMenuClick, events, 
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4 text-muted-foreground" />
                 <div className="flex items-center gap-2">
-                  <span>Attendees:</span>
+                  <span>参加者：</span>
                   <div className="flex -space-x-2">
                     {selectedEvent.attendees.map((attendee: string, index: number) => (
                       <Avatar key={index} className="w-6 h-6 border-2 border-background">
@@ -333,10 +334,10 @@ export function CalendarMain({ selectedDate, onDateSelect, onMenuClick, events, 
               <div className="flex gap-2 pt-4">
                 <Button variant="outline" className="flex-1 cursor-pointer" onClick={() => {
                   setShowEventDialog(false)
-                }}>Edit</Button>
+                }}>編集</Button>
                 <Button variant="destructive" className="flex-1 cursor-pointer" onClick={() => {
                   setShowEventDialog(false)
-                }}>Delete</Button>
+                }}>削除</Button>
               </div>
             </div>
           )}

@@ -10,6 +10,9 @@ import { categories, priorities, statuses } from "../data/data"
 import type { Task } from "../data/schema"
 import { DataTableColumnHeader } from "./data-table-column-header"
 import { DataTableRowActions } from "./data-table-row-actions"
+import { ja } from "@/i18n/ja"
+
+const t = ja.tasks
 
 export const columns: ColumnDef<Task>[] = [
   {
@@ -39,7 +42,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "id",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Task" />
+      <DataTableColumnHeader column={column} title={t.task} />
     ),
     cell: ({ row }) => (
       <div className="w-[90px] font-medium">{row.getValue("id")}</div>
@@ -49,7 +52,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "title",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Title" />
+      <DataTableColumnHeader column={column} title={t.title_col} />
     ),
     cell: ({ row }) => {
       return (
@@ -64,7 +67,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "category",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Category" />
+      <DataTableColumnHeader column={column} title={t.category} />
     ),
     cell: ({ row }) => {
       const category = categories.find(
@@ -90,7 +93,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "status",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Status" />
+      <DataTableColumnHeader column={column} title={t.status} />
     ),
     cell: ({ row }) => {
       const status = statuses.find(
@@ -117,7 +120,7 @@ export const columns: ColumnDef<Task>[] = [
   {
     accessorKey: "priority",
     header: ({ column }) => (
-      <DataTableColumnHeader column={column} title="Priority" />
+      <DataTableColumnHeader column={column} title={t.priority} />
     ),
     cell: ({ row }) => {
       const priority = priorities.find(

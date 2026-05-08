@@ -17,6 +17,7 @@ import { AddTaskModal } from "./add-task-modal"
 
 import { categories, priorities, statuses } from "../data/data"
 import type { Task } from "../data/schema"
+import { ja } from "@/i18n/ja"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
@@ -27,6 +28,7 @@ export function DataTableToolbar<TData>({
   table,
   onAddTask,
 }: DataTableToolbarProps<TData>) {
+  const t = ja.tasks
   const isFiltered = table.getState().columnFilters.length > 0
 
   const handleStatusChange = (value: string) => {
@@ -71,10 +73,10 @@ export function DataTableToolbar<TData>({
             onValueChange={handleStatusChange}
           >
             <SelectTrigger className="w-full cursor-pointer">
-              <SelectValue placeholder="Status" />
+              <SelectValue placeholder={t.status} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all" className="cursor-pointer">All Status</SelectItem>
+              <SelectItem value="all" className="cursor-pointer">すべてのステータス</SelectItem>
               {statuses.map((status) => (
                 <SelectItem
                   key={status.value}
@@ -98,10 +100,10 @@ export function DataTableToolbar<TData>({
             onValueChange={handleCategoryChange}
           >
             <SelectTrigger className="w-full cursor-pointer">
-              <SelectValue placeholder="Category" />
+              <SelectValue placeholder={t.category} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all" className="cursor-pointer">All Categories</SelectItem>
+              <SelectItem value="all" className="cursor-pointer">すべてのカテゴリ</SelectItem>
               {categories.map((category) => (
                 <SelectItem
                   key={category.value}
@@ -120,10 +122,10 @@ export function DataTableToolbar<TData>({
             onValueChange={handlePriorityChange}
           >
             <SelectTrigger className="w-full cursor-pointer">
-              <SelectValue placeholder="Priority" />
+              <SelectValue placeholder={t.priority} />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="all" className="cursor-pointer">All Priorities</SelectItem>
+              <SelectItem value="all" className="cursor-pointer">すべての優先度</SelectItem>
               {priorities.map((priority) => (
                 <SelectItem
                   key={priority.value}
@@ -144,7 +146,7 @@ export function DataTableToolbar<TData>({
       <div className="flex items-center justify-between">
         <div className="flex flex-1 items-center space-x-2">
           <Input
-            placeholder="Search Task"
+            placeholder="タスクを検索"
             value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
             onChange={(event) =>
               table.getColumn("title")?.setFilterValue(event.target.value)
@@ -158,7 +160,7 @@ export function DataTableToolbar<TData>({
             disabled={!isFiltered}
           >
             <RefreshCcw className="h-4 w-4" />
-            <span className="hidden lg:block">Reset Filters</span>
+            <span className="hidden lg:block">フィルターをリセット</span>
           </Button>
         </div>
         <div className="flex items-center space-x-2">
