@@ -22,6 +22,9 @@ import { SidebarNotification } from "@/components/sidebar-notification"
 
 import { NavMain } from "@/components/nav-main"
 import { NavUser } from "@/components/nav-user"
+import { ja } from "@/i18n/ja"
+
+const t = ja.sidebar
 import {
   Sidebar,
   SidebarContent,
@@ -40,170 +43,74 @@ const data = {
   },
   navGroups: [
     {
-      label: "Dashboards",
+      label: t.groups.dashboards,
       items: [
-        {
-          title: "Dashboard 1",
-          url: "/dashboard",
-          icon: LayoutDashboard,
-        },
-        {
-          title: "Dashboard 2",
-          url: "/dashboard-2",
-          icon: LayoutPanelLeft,
-        },
+        { title: t.nav.dashboard1, url: "/dashboard",   icon: LayoutDashboard },
+        { title: t.nav.dashboard2, url: "/dashboard-2", icon: LayoutPanelLeft },
       ],
     },
     {
-      label: "Apps",
+      label: t.groups.apps,
       items: [
-        {
-          title: "Mail",
-          url: "/mail",
-          icon: Mail,
-        },
-        {
-          title: "Tasks",
-          url: "/tasks",
-          icon: CheckSquare,
-        },
-        {
-          title: "Chat",
-          url: "/chat",
-          icon: MessageCircle,
-        },
-        {
-          title: "Calendar",
-          url: "/calendar",
-          icon: Calendar,
-        },
-        {
-          title: "Users",
-          url: "/users",
-          icon: Users,
-        },
+        { title: t.nav.mail,      url: "/mail",      icon: Mail },
+        { title: t.nav.tasks,     url: "/tasks",     icon: CheckSquare },
+        { title: t.nav.chat,      url: "/chat",      icon: MessageCircle },
+        { title: t.nav.calendar,  url: "/calendar",  icon: Calendar },
+        { title: t.nav.users,     url: "/users",     icon: Users },
       ],
     },
     {
-      label: "Pages",
+      label: t.groups.pages,
       items: [
         {
-          title: "Landing",
+          title: t.nav.landing,
           url: "/landing",
           target: "_blank",
           icon: LayoutTemplate,
         },
         {
-          title: "Auth Pages",
+          title: t.nav.authPages,
           url: "#",
           icon: Shield,
           items: [
-            {
-              title: "Sign In 1",
-              url: "/sign-in",
-            },
-            {
-              title: "Sign In 2",
-              url: "/sign-in-2",
-            },
-            {
-              title: "Sign In 3",
-              url: "/sign-in-3",
-            },
-            {
-              title: "Sign Up 1",
-              url: "/sign-up",
-            },
-            {
-              title: "Sign Up 2",
-              url: "/sign-up-2",
-            },
-            {
-              title: "Sign Up 3",
-              url: "/sign-up-3",
-            },
-            {
-              title: "Forgot Password 1",
-              url: "/forgot-password",
-            },
-            {
-              title: "Forgot Password 2",
-              url: "/forgot-password-2",
-            },
-            {
-              title: "Forgot Password 3",
-              url: "/forgot-password-3",
-            }
+            { title: t.nav.signIn1,          url: "/sign-in" },
+            { title: t.nav.signIn2,          url: "/sign-in-2" },
+            { title: t.nav.signIn3,          url: "/sign-in-3" },
+            { title: t.nav.signUp1,          url: "/sign-up" },
+            { title: t.nav.signUp2,          url: "/sign-up-2" },
+            { title: t.nav.signUp3,          url: "/sign-up-3" },
+            { title: t.nav.forgotPassword1,  url: "/forgot-password" },
+            { title: t.nav.forgotPassword2,  url: "/forgot-password-2" },
+            { title: t.nav.forgotPassword3,  url: "/forgot-password-3" },
           ],
         },
         {
-          title: "Errors",
+          title: t.nav.errors,
           url: "#",
           icon: AlertTriangle,
           items: [
-            {
-              title: "Unauthorized",
-              url: "/errors/unauthorized",
-            },
-            {
-              title: "Forbidden",
-              url: "/errors/forbidden",
-            },
-            {
-              title: "Not Found",
-              url: "/errors/not-found",
-            },
-            {
-              title: "Internal Server Error",
-              url: "/errors/internal-server-error",
-            },
-            {
-              title: "Under Maintenance",
-              url: "/errors/under-maintenance",
-            },
+            { title: t.nav.unauthorized,         url: "/errors/unauthorized" },
+            { title: t.nav.forbidden,            url: "/errors/forbidden" },
+            { title: t.nav.notFound,             url: "/errors/not-found" },
+            { title: t.nav.internalServerError,  url: "/errors/internal-server-error" },
+            { title: t.nav.underMaintenance,     url: "/errors/under-maintenance" },
           ],
         },
         {
-          title: "Settings",
+          title: t.nav.settings,
           url: "#",
           icon: Settings,
           items: [
-            {
-              title: "User Settings",
-              url: "/settings/user",
-            },
-            {
-              title: "Account Settings",
-              url: "/settings/account",
-            },
-            {
-              title: "Plans & Billing",
-              url: "/settings/billing",
-            },
-            {
-              title: "Appearance",
-              url: "/settings/appearance",
-            },
-            {
-              title: "Notifications",
-              url: "/settings/notifications",
-            },
-            {
-              title: "Connections",
-              url: "/settings/connections",
-            },
+            { title: t.nav.userSettings,    url: "/settings/user" },
+            { title: t.nav.accountSettings, url: "/settings/account" },
+            { title: t.nav.billing,         url: "/settings/billing" },
+            { title: t.nav.appearance,      url: "/settings/appearance" },
+            { title: t.nav.notifications,   url: "/settings/notifications" },
+            { title: t.nav.connections,     url: "/settings/connections" },
           ],
         },
-        {
-          title: "FAQs",
-          url: "/faqs",
-          icon: HelpCircle,
-        },
-        {
-          title: "Pricing",
-          url: "/pricing",
-          icon: CreditCard,
-        },
+        { title: t.nav.faqs,    url: "/faqs",    icon: HelpCircle },
+        { title: t.nav.pricing, url: "/pricing", icon: CreditCard },
       ],
     },
   ],
@@ -221,8 +128,8 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                   <Logo size={24} className="text-current" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
-                  <span className="truncate font-medium">ShadcnStore</span>
-                  <span className="truncate text-xs">Admin Dashboard</span>
+                  <span className="truncate font-medium">{t.appName}</span>
+                  <span className="truncate text-xs">{t.appSubtitle}</span>
                 </div>
               </Link>
             </SidebarMenuButton>
