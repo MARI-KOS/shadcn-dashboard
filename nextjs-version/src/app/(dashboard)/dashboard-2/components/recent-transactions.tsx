@@ -6,6 +6,9 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { ja } from "@/i18n/ja"
+
+const t = ja.dashboard2
 
 const transactions = [
   {
@@ -17,7 +20,7 @@ const transactions = [
     },
     amount: "$1,999.00",
     status: "completed",
-    date: "2 hours ago",
+    date: "2時間前",
   },
   {
     id: "TXN-002",
@@ -28,7 +31,7 @@ const transactions = [
     },
     amount: "$2,999.00",
     status: "pending",
-    date: "5 hours ago",
+    date: "5時間前",
   },
   {
     id: "TXN-003",
@@ -39,7 +42,7 @@ const transactions = [
     },
     amount: "$39.00",
     status: "completed",
-    date: "1 day ago",
+    date: "1日前",
   },
   {
     id: "TXN-004",
@@ -50,7 +53,7 @@ const transactions = [
     },
     amount: "$299.00",
     status: "failed",
-    date: "2 days ago",
+    date: "2日前",
   },
   {
     id: "TXN-005",
@@ -61,21 +64,27 @@ const transactions = [
     },
     amount: "$99.00",
     status: "completed",
-    date: "3 days ago",
+    date: "3日前",
   },
 ]
+
+const statusLabel: Record<string, string> = {
+  completed: t.statusCompleted,
+  pending: t.statusPending,
+  failed: t.statusFailed,
+}
 
 export function RecentTransactions() {
   return (
     <Card className="cursor-pointer">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
         <div>
-          <CardTitle>Recent Transactions</CardTitle>
-          <CardDescription>Latest customer transactions</CardDescription>
+          <CardTitle>{t.recentTransactions}</CardTitle>
+          <CardDescription>{t.latestTransactions}</CardDescription>
         </div>
         <Button variant="outline" size="sm" className="cursor-pointer">
           <Eye className="h-4 w-4 mr-2" />
-          View All
+          {t.viewAll}
         </Button>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -101,7 +110,7 @@ export function RecentTransactions() {
                     }
                     className="cursor-pointer"
                   >
-                    {transaction.status}
+                    {statusLabel[transaction.status]}
                   </Badge>
                   <div className="text-right">
                     <p className="text-sm font-medium">{transaction.amount}</p>
@@ -114,9 +123,9 @@ export function RecentTransactions() {
                       </Button>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem className="cursor-pointer">View Details</DropdownMenuItem>
-                      <DropdownMenuItem className="cursor-pointer">Download Receipt</DropdownMenuItem>
-                      <DropdownMenuItem className="cursor-pointer">Contact Customer</DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer">{t.viewDetails}</DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer">{t.downloadReceipt}</DropdownMenuItem>
+                      <DropdownMenuItem className="cursor-pointer">{t.contactCustomer}</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>

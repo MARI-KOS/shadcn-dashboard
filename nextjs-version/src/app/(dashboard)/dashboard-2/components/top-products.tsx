@@ -5,17 +5,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Progress } from "@/components/ui/progress"
+import { ja } from "@/i18n/ja"
+
+const t = ja.dashboard2
 
 const products = [
   {
     id: 1,
-    name: "Premium Dashboard",
+    name: "プレミアムダッシュボード",
     sales: 2847,
     revenue: "$142,350",
     growth: "+23%",
     rating: 4.8,
     stock: 145,
-    category: "Software",
+    category: "ソフトウェア",
   },
   {
     id: 2,
@@ -25,37 +28,37 @@ const products = [
     growth: "+18%",
     rating: 4.6,
     stock: 67,
-    category: "Tools",
+    category: "ツール",
   },
   {
     id: 3,
-    name: "Mobile App Suite",
+    name: "モバイルアプリスイート",
     sales: 1456,
     revenue: "$72,800",
     growth: "+12%",
     rating: 4.9,
     stock: 234,
-    category: "Mobile",
+    category: "モバイル",
   },
   {
     id: 4,
-    name: "Enterprise License",
+    name: "エンタープライズライセンス",
     sales: 892,
     revenue: "$178,400",
     growth: "+8%",
     rating: 4.7,
     stock: 12,
-    category: "Enterprise",
+    category: "エンタープライズ",
   },
   {
     id: 5,
-    name: "Basic Subscription",
+    name: "ベーシックサブスクリプション",
     sales: 3421,
     revenue: "$68,420",
     growth: "+31%",
     rating: 4.4,
     stock: 999,
-    category: "Subscription",
+    category: "サブスクリプション",
   },
 ]
 
@@ -64,12 +67,12 @@ export function TopProducts() {
     <Card className="cursor-pointer">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
         <div>
-          <CardTitle>Top Products</CardTitle>
-          <CardDescription>Best performing products this month</CardDescription>
+          <CardTitle>{t.topProducts}</CardTitle>
+          <CardDescription>{t.bestProducts}</CardDescription>
         </div>
         <Button variant="outline" size="sm" className="cursor-pointer">
           <Eye className="h-4 w-4 mr-2" />
-          View All
+          {t.viewAll}
         </Button>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -92,7 +95,7 @@ export function TopProducts() {
                     <span className="text-xs text-muted-foreground">{product.rating}</span>
                   </div>
                   <span className="text-xs text-muted-foreground">•</span>
-                  <span className="text-xs text-muted-foreground">{product.sales} sales</span>
+                  <span className="text-xs text-muted-foreground">{product.sales}{t.sales}</span>
                 </div>
               </div>
               <div className="text-right space-y-1">
@@ -107,7 +110,7 @@ export function TopProducts() {
                   </Badge>
                 </div>
                 <div className="flex items-center space-x-2">
-                  <span className="text-xs text-muted-foreground">Stock: {product.stock}</span>
+                  <span className="text-xs text-muted-foreground">{t.stock}{product.stock}</span>
                   <Progress
                     value={product.stock > 100 ? 100 : (product.stock / 100) * 100}
                     className="w-12 h-1"

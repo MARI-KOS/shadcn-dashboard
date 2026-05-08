@@ -6,29 +6,32 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
+import { ja } from "@/i18n/ja"
+
+const t = ja.dashboard2
 
 const salesData = [
-  { month: "Jan", sales: 12500, target: 15000 },
-  { month: "Feb", sales: 18200, target: 15000 },
-  { month: "Mar", sales: 16800, target: 15000 },
-  { month: "Apr", sales: 22400, target: 20000 },
-  { month: "May", sales: 24600, target: 20000 },
-  { month: "Jun", sales: 28200, target: 25000 },
-  { month: "Jul", sales: 31500, target: 25000 },
-  { month: "Aug", sales: 29800, target: 25000 },
-  { month: "Sep", sales: 33200, target: 30000 },
-  { month: "Oct", sales: 35100, target: 30000 },
-  { month: "Nov", sales: 38900, target: 35000 },
-  { month: "Dec", sales: 42300, target: 35000 },
+  { month: "1月", sales: 12500, target: 15000 },
+  { month: "2月", sales: 18200, target: 15000 },
+  { month: "3月", sales: 16800, target: 15000 },
+  { month: "4月", sales: 22400, target: 20000 },
+  { month: "5月", sales: 24600, target: 20000 },
+  { month: "6月", sales: 28200, target: 25000 },
+  { month: "7月", sales: 31500, target: 25000 },
+  { month: "8月", sales: 29800, target: 25000 },
+  { month: "9月", sales: 33200, target: 30000 },
+  { month: "10月", sales: 35100, target: 30000 },
+  { month: "11月", sales: 38900, target: 35000 },
+  { month: "12月", sales: 42300, target: 35000 },
 ]
 
 const chartConfig = {
   sales: {
-    label: "Sales",
+    label: t.salesLabel,
     color: "var(--primary)",
   },
   target: {
-    label: "Target",
+    label: t.targetLabel,
     color: "var(--primary)",
   },
 }
@@ -40,22 +43,22 @@ export function SalesChart() {
     <Card className="cursor-pointer">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <div>
-          <CardTitle>Sales Performance</CardTitle>
-          <CardDescription>Monthly sales vs targets</CardDescription>
+          <CardTitle>{t.salesPerformance}</CardTitle>
+          <CardDescription>{t.monthlySalesVsTargets}</CardDescription>
         </div>
         <div className="flex items-center space-x-2">
           <Select value={timeRange} onValueChange={setTimeRange}>
-            <SelectTrigger className="w-32 cursor-pointer">
+            <SelectTrigger className="w-36 cursor-pointer">
               <SelectValue />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="3m" className="cursor-pointer">Last 3 months</SelectItem>
-              <SelectItem value="6m" className="cursor-pointer">Last 6 months</SelectItem>
-              <SelectItem value="12m" className="cursor-pointer">Last 12 months</SelectItem>
+              <SelectItem value="3m" className="cursor-pointer">{t.last3Months}</SelectItem>
+              <SelectItem value="6m" className="cursor-pointer">{t.last6Months}</SelectItem>
+              <SelectItem value="12m" className="cursor-pointer">{t.last12Months}</SelectItem>
             </SelectContent>
           </Select>
           <Button variant="outline" className="cursor-pointer">
-            Export
+            {t.export}
           </Button>
         </div>
       </CardHeader>
@@ -74,14 +77,14 @@ export function SalesChart() {
                 </linearGradient>
               </defs>
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted/30" />
-              <XAxis 
-                dataKey="month" 
+              <XAxis
+                dataKey="month"
                 axisLine={false}
                 tickLine={false}
                 className="text-xs"
                 tick={{ fontSize: 12 }}
               />
-              <YAxis 
+              <YAxis
                 axisLine={false}
                 tickLine={false}
                 className="text-xs"
