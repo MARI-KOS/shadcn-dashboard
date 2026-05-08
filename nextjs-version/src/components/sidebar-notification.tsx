@@ -31,7 +31,6 @@ export function SidebarNotification() {
           <h3 className="flex items-center gap-3 font-semibold text-neutral-900 dark:text-neutral-100 mb-2 mt-1">
             <Logo size={42} className="-mt-1" />
             <div>
-              {t.title.replace('ShadcnStore', '')}{" "}
               <a
                 href="https://shadcnstore.com"
                 target="_blank"
@@ -40,6 +39,7 @@ export function SidebarNotification() {
               >
                 ShadcnStore
               </a>
+              {t.title.replace('ShadcnStore', '')}
             </div>
           </h3>
           <p className="text-sm text-muted-foreground dark:text-neutral-400 leading-relaxed">
