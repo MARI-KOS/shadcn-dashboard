@@ -58,6 +58,47 @@ import { useIsMobile } from "@/hooks/use-mobile"
 import { ja } from "@/i18n/ja"
 
 const t = ja.dashboard
+
+const statusDisplayMap: Record<string, string> = {
+  "In Process": t.inProgress,
+  "In Progress": t.inProgress,
+  "Done": t.done,
+  "Not Started": t.notStarted,
+  "Completed": t.done,
+  "Active": 'アクティブ',
+  "Final": '最終版',
+  "Under Review": 'レビュー中',
+  "Draft": '下書き',
+}
+
+const typeDisplayMap: Record<string, string> = {
+  "Narrative": t.narrative,
+  "Technical content": '技術コンテンツ',
+  "Cover page": t.coverPage,
+  "Table of contents": t.tableOfContents,
+  "Plain language": '平易な文章',
+  "Legal": '法務',
+  "Visual": 'ビジュアル',
+  "Financial": '財務',
+  "Research": '調査',
+  "Planning": '計画',
+  "Government Contract": '政府契約',
+  "Defense Contract": '防衛契約',
+  "Space Technology": '宇宙技術',
+  "Security Contract": 'セキュリティ契約',
+  "IT Services": 'ITサービス',
+  "Project Manager": 'プロジェクトマネージャー',
+  "Lead Engineer": 'リードエンジニア',
+  "Security Specialist": 'セキュリティスペシャリスト',
+  "Systems Architect": 'システムアーキテクト',
+  "Quality Assurance Lead": '品質保証リード',
+  "Technical Document": '技術文書',
+  "Compliance Document": 'コンプライアンス文書',
+  "Management Document": '管理文書',
+  "Risk Document": 'リスク文書',
+  "QA Document": '品質保証文書',
+}
+
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
@@ -176,7 +217,7 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     cell: ({ row }) => (
       <div className="w-32">
         <Badge variant="outline" className="text-muted-foreground px-1.5">
-          {row.original.type}
+          {typeDisplayMap[row.original.type] ?? row.original.type}
         </Badge>
       </div>
     ),
@@ -186,12 +227,12 @@ const columns: ColumnDef<z.infer<typeof schema>>[] = [
     header: () => t.status,
     cell: ({ row }) => (
       <Badge variant="outline" className="text-muted-foreground px-1.5">
-        {row.original.status === "Done" ? (
+        {row.original.status === "Done" || row.original.status === "Completed" || row.original.status === "Final" || row.original.status === "Active" ? (
           <CircleCheckBig className="text-green-500 dark:text-green-400" />
         ) : (
           <Loader />
         )}
-        {row.original.status}
+        {statusDisplayMap[row.original.status] ?? row.original.status}
       </Badge>
     ),
   },
@@ -582,7 +623,7 @@ export function DataTable({
                     colSpan={columns.length}
                     className="h-24 text-center"
                   >
-                    No results.
+                    データがありません
                   </TableCell>
                 </TableRow>
               )}
@@ -592,8 +633,7 @@ export function DataTable({
       </div>
       <div className="flex items-center justify-between px-4">
         <div className="text-muted-foreground hidden flex-1 text-sm lg:flex">
-          {currentTable.getFilteredSelectedRowModel().rows.length} of{" "}
-          {currentTable.getFilteredRowModel().rows.length} row(s) selected.
+          {currentTable.getFilteredSelectedRowModel().rows.length} / {currentTable.getFilteredRowModel().rows.length} 件選択中
         </div>
         <div className="flex w-full items-center gap-8 lg:w-fit">
           <div className="hidden items-center gap-2 lg:flex">
@@ -790,7 +830,7 @@ export function DataTable({
                       colSpan={columns.length}
                       className="h-24 text-center"
                     >
-                      No results.
+                      データがありません
                     </TableCell>
                   </TableRow>
                 )}
@@ -800,8 +840,7 @@ export function DataTable({
         </div>
         <div className="flex items-center justify-between px-4">
           <div className="text-muted-foreground hidden flex-1 text-sm lg:flex">
-            {table.getFilteredSelectedRowModel().rows.length} of{" "}
-            {table.getFilteredRowModel().rows.length} row(s) selected.
+            {table.getFilteredSelectedRowModel().rows.length} / {table.getFilteredRowModel().rows.length} 件選択中
           </div>
           <div className="flex w-full items-center gap-8 lg:w-fit">
             <div className="hidden items-center gap-2 lg:flex">

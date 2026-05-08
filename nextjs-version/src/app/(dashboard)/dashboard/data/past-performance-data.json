@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "header": "Federal Communications Commission - Network Infrastructure Modernization",
+    "header": "Federal Communications Commission - ネットワークインフラ近代化",
     "type": "Government Contract",
     "status": "Completed",
     "target": "95%",
@@ -10,7 +10,7 @@
   },
   {
     "id": 2,
-    "header": "Department of Defense - Cybersecurity Enhancement Program",
+    "header": "Department of Defense - サイバーセキュリティ強化プログラム",
     "type": "Defense Contract",
     "status": "Completed",
     "target": "98%",
@@ -19,7 +19,7 @@
   },
   {
     "id": 3,
-    "header": "NASA - Satellite Communication System Upgrade",
+    "header": "NASA - 衛星通信システムのアップグレード",
     "type": "Space Technology",
     "status": "Completed",
     "target": "92%",
@@ -28,7 +28,7 @@
   },
   {
     "id": 4,
-    "header": "Department of Homeland Security - Border Security Tech",
+    "header": "Department of Homeland Security - 国境セキュリティ技術",
     "type": "Security Contract",
     "status": "In Progress",
     "target": "85%",
@@ -37,7 +37,7 @@
   },
   {
     "id": 5,
-    "header": "GSA - Cloud Infrastructure Migration",
+    "header": "GSA - クラウドインフラ移行",
     "type": "IT Services",
     "status": "Completed",
     "target": "96%",
