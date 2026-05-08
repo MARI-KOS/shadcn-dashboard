@@ -21,10 +21,13 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import { ja } from "@/i18n/ja"
+
+const t = ja.auth.signIn
 
 const loginFormSchema = z.object({
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
+  email: z.string().email("メールアドレスの形式が正しくありません"),
+  password: z.string().min(6, "パスワードは6文字以上で入力してください"),
 })
 
 type LoginFormValues = z.infer<typeof loginFormSchema>
@@ -45,9 +48,9 @@ export function LoginForm1({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Welcome back</CardTitle>
+          <CardTitle className="text-xl">{t.title}</CardTitle>
           <CardDescription>
-            Enter your email below to login to your account
+            {t.subtitle}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -60,11 +63,11 @@ export function LoginForm1({
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>{t.email}</FormLabel>
                         <FormControl>
                           <Input
                             type="email"
-                            placeholder="test@example.com"
+                            placeholder={t.emailPlaceholder}
                             {...field}
                           />
                         </FormControl>
@@ -78,12 +81,12 @@ export function LoginForm1({
                     render={({ field }) => (
                       <FormItem>
                         <div className="flex items-center">
-                          <FormLabel>Password</FormLabel>
+                          <FormLabel>{t.password}</FormLabel>
                           <a
                             href="/auth/forgot-password"
                             className="ml-auto text-sm underline-offset-4 hover:underline"
                           >
-                            Forgot your password?
+                            {t.forgotPassword}
                           </a>
                         </div>
                         <FormControl>
@@ -94,7 +97,7 @@ export function LoginForm1({
                     )}
                   />
                   <Button type="submit" className="w-full cursor-pointer">
-                    Login
+                    {t.loginButton}
                   </Button>
 
                   <Button variant="outline" className="w-full cursor-pointer" type="button">
@@ -104,13 +107,13 @@ export function LoginForm1({
                         fill="currentColor"
                       />
                     </svg>
-                    Login with Google
+                    {t.loginWithGoogle}
                   </Button>
                 </div>
                 <div className="text-center text-sm">
-                  Don&apos;t have an account?{" "}
+                  {t.noAccount}{" "}
                   <a href="/auth/sign-up" className="underline underline-offset-4">
-                    Sign up
+                    {t.signUpLink}
                   </a>
                 </div>
               </div>
@@ -119,8 +122,7 @@ export function LoginForm1({
         </CardContent>
       </Card>
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
+        {t.terms}<a href="#">{t.termsLink}</a>{t.and}<a href="#">{t.privacyLink}</a>{t.termsEnd}
       </div>
     </div>
   )

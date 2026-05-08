@@ -11,6 +11,9 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { ja } from "@/i18n/ja"
+
+const t = ja.auth.forgotPassword
 
 export function ForgotPasswordForm1({
   className,
@@ -20,9 +23,9 @@ export function ForgotPasswordForm1({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Forgot your password?</CardTitle>
+          <CardTitle className="text-xl">{t.title}</CardTitle>
           <CardDescription>
-            Enter your email address and we&apos;ll send you a link to reset your password
+            {t.subtitle}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -30,22 +33,22 @@ export function ForgotPasswordForm1({
             <div className="grid gap-6">
               <div className="grid gap-6">
                 <div className="grid gap-3">
-                  <Label htmlFor="email">Email</Label>
+                  <Label htmlFor="email">{t.email}</Label>
                   <Input
                     id="email"
                     type="email"
-                    placeholder="m@example.com"
+                    placeholder={t.emailPlaceholder}
                     required
                   />
                 </div>
                 <Button type="submit" className="w-full cursor-pointer">
-                  Send Reset Link
+                  {t.sendButton}
                 </Button>
               </div>
               <div className="text-center text-sm">
-                Remember your password?{" "}
+                {t.rememberPassword}{" "}
                 <a href="/auth/sign-in" className="underline underline-offset-4">
-                  Back to sign in
+                  {t.backToSignIn}
                 </a>
               </div>
             </div>

@@ -9,6 +9,9 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { Logo } from "@/components/logo"
 import Link from "next/link"
 import Image from "next/image"
+import { ja } from "@/i18n/ja"
+
+const t = ja.auth.signUp
 
 export function SignupForm3({
   className,
@@ -29,65 +32,58 @@ export function SignupForm3({
                 </Link>
               </div>
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">Create your account</h1>
+                <h1 className="text-2xl font-bold">{t.title}</h1>
                 <p className="text-muted-foreground text-balance">
-                  Enter your information to create a new account
+                  {t.subtitle}
                 </p>
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="grid gap-3">
-                  <Label htmlFor="firstName">First Name</Label>
+                  <Label htmlFor="firstName">{t.firstName}</Label>
                   <Input
                     id="firstName"
-                    placeholder="John"
+                    placeholder={t.firstNamePlaceholder}
                     required
                   />
                 </div>
                 <div className="grid gap-3">
-                  <Label htmlFor="lastName">Last Name</Label>
+                  <Label htmlFor="lastName">{t.lastName}</Label>
                   <Input
                     id="lastName"
-                    placeholder="Doe"
+                    placeholder={t.lastNamePlaceholder}
                     required
                   />
                 </div>
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t.email}</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder={t.emailPlaceholder}
                   required
                 />
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="password">Password</Label>
+                <Label htmlFor="password">{t.password}</Label>
                 <Input id="password" type="password" required />
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="confirmPassword">Confirm Password</Label>
+                <Label htmlFor="confirmPassword">{t.confirmPassword}</Label>
                 <Input id="confirmPassword" type="password" required />
               </div>
               <div className="flex items-center space-x-2">
                 <Checkbox id="terms" required />
                 <Label htmlFor="terms" className="text-sm">
-                  I agree to the{" "}
-                  <a href="#" className="underline underline-offset-4 hover:text-primary">
-                    Terms of Service
-                  </a>{" "}
-                  and{" "}
-                  <a href="#" className="underline underline-offset-4 hover:text-primary">
-                    Privacy Policy
-                  </a>
+                  {t.agreeTerms}
                 </Label>
               </div>
               <Button type="submit" className="w-full cursor-pointer">
-                Create Account
+                {t.createButton}
               </Button>
               <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
                 <span className="bg-card text-muted-foreground relative z-10 px-2">
-                  Or continue with
+                  以下でも続行できます
                 </span>
               </div>
               <div className="grid grid-cols-3 gap-4">
@@ -98,7 +94,7 @@ export function SignupForm3({
                       fill="currentColor"
                     />
                   </svg>
-                  <span className="sr-only">Sign up with Apple</span>
+                  <span className="sr-only">Appleで登録</span>
                 </Button>
                 <Button variant="outline" type="button" className="w-full cursor-pointer">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -107,7 +103,7 @@ export function SignupForm3({
                       fill="currentColor"
                     />
                   </svg>
-                  <span className="sr-only">Sign up with Google</span>
+                  <span className="sr-only">Googleで登録</span>
                 </Button>
                 <Button variant="outline" type="button" className="w-full cursor-pointer">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -116,13 +112,13 @@ export function SignupForm3({
                       fill="currentColor"
                     />
                   </svg>
-                  <span className="sr-only">Sign up with Meta</span>
+                  <span className="sr-only">Metaで登録</span>
                 </Button>
               </div>
               <div className="text-center text-sm">
-                Already have an account?{" "}
+                {t.hasAccount}{" "}
                 <a href="/auth/sign-in-3" className="underline underline-offset-4">
-                  Sign in
+                  {t.signInLink}
                 </a>
               </div>
             </div>
@@ -138,8 +134,7 @@ export function SignupForm3({
         </CardContent>
       </Card>
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
+        {t.terms}<a href="#">{t.termsLink}</a>{t.and}<a href="#">{t.privacyLink}</a>{t.termsEnd}
       </div>
     </div>
   )

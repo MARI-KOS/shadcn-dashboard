@@ -22,16 +22,19 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Checkbox } from "@/components/ui/checkbox"
+import { ja } from "@/i18n/ja"
+
+const t = ja.auth.signUp
 
 const signupFormSchema = z.object({
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-  confirmPassword: z.string().min(6, "Please confirm your password"),
-  terms: z.boolean().refine(val => val === true, "You must agree to the terms"),
+  firstName: z.string().min(1, "姓は必須です"),
+  lastName: z.string().min(1, "名は必須です"),
+  email: z.string().email("メールアドレスの形式が正しくありません"),
+  password: z.string().min(6, "パスワードは6文字以上で入力してください"),
+  confirmPassword: z.string().min(6, "パスワードを確認してください"),
+  terms: z.boolean().refine(val => val === true, "利用規約に同意してください"),
 }).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
+  message: "パスワードが一致しません",
   path: ["confirmPassword"],
 })
 
@@ -62,9 +65,9 @@ export function SignupForm1({
     <div className={cn("flex flex-col gap-6", className)} {...props}>
       <Card>
         <CardHeader className="text-center">
-          <CardTitle className="text-xl">Create Account</CardTitle>
+          <CardTitle className="text-xl">{t.title}</CardTitle>
           <CardDescription>
-            Enter your information to create a new account
+            {t.subtitle}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -78,9 +81,9 @@ export function SignupForm1({
                       name="firstName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>First Name</FormLabel>
+                          <FormLabel>{t.firstName}</FormLabel>
                           <FormControl>
-                            <Input placeholder="John" {...field} />
+                            <Input placeholder={t.firstNamePlaceholder} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -91,9 +94,9 @@ export function SignupForm1({
                       name="lastName"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Last Name</FormLabel>
+                          <FormLabel>{t.lastName}</FormLabel>
                           <FormControl>
-                            <Input placeholder="Doe" {...field} />
+                            <Input placeholder={t.lastNamePlaceholder} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -105,11 +108,11 @@ export function SignupForm1({
                     name="email"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Email</FormLabel>
+                        <FormLabel>{t.email}</FormLabel>
                         <FormControl>
                           <Input
                             type="email"
-                            placeholder="m@example.com"
+                            placeholder={t.emailPlaceholder}
                             {...field}
                           />
                         </FormControl>
@@ -122,7 +125,7 @@ export function SignupForm1({
                     name="password"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Password</FormLabel>
+                        <FormLabel>{t.password}</FormLabel>
                         <FormControl>
                           <Input type="password" {...field} />
                         </FormControl>
@@ -135,7 +138,7 @@ export function SignupForm1({
                     name="confirmPassword"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel>Confirm Password</FormLabel>
+                        <FormLabel>{t.confirmPassword}</FormLabel>
                         <FormControl>
                           <Input type="password" {...field} />
                         </FormControl>
@@ -156,13 +159,13 @@ export function SignupForm1({
                           />
                         </FormControl>
                         <FormLabel className="text-sm">
-                          I agree to the terms of service and privacy policy
+                          {t.agreeTerms}
                         </FormLabel>
                       </FormItem>
                     )}
                   />
                   <Button type="submit" className="w-full cursor-pointer">
-                    Create Account
+                    {t.createButton}
                   </Button>
 
                   <Button variant="outline" className="w-full cursor-pointer" type="button">
@@ -172,13 +175,13 @@ export function SignupForm1({
                         fill="currentColor"
                       />
                     </svg>
-                    Sign up with Google
+                    {t.signUpWithGoogle}
                   </Button>
                 </div>
                 <div className="text-center text-sm">
-                  Already have an account?{" "}
+                  {t.hasAccount}{" "}
                   <a href="/auth/sign-in" className="underline underline-offset-4">
-                    Sign in
+                    {t.signInLink}
                   </a>
                 </div>
               </div>
@@ -187,8 +190,7 @@ export function SignupForm1({
         </CardContent>
       </Card>
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
+        {t.terms}<a href="#">{t.termsLink}</a>{t.and}<a href="#">{t.privacyLink}</a>{t.termsEnd}
       </div>
     </div>
   )
