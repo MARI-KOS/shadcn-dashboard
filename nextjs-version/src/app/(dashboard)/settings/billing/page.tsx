@@ -4,10 +4,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { PricingPlans } from "@/components/pricing-plans"
 import { CurrentPlanCard } from "./components/current-plan-card"
 import { BillingHistoryCard } from "./components/billing-history-card"
+import { ja } from "@/i18n/ja"
 
 // Import data
 import currentPlanData from "./data/current-plan.json"
 import billingHistoryData from "./data/billing-history.json"
+
+const t = ja.settings.billing
 
 export default function BillingSettings() {
   const handlePlanSelect = (planId: string) => {
@@ -18,9 +21,9 @@ export default function BillingSettings() {
   return (
     <div className="space-y-6 px-4 lg:px-6">
         <div>
-          <h1 className="text-3xl font-bold">Plans & Billing</h1>
+          <h1 className="text-3xl font-bold">{t.title}</h1>
           <p className="text-muted-foreground">
-            Manage your subscription and billing information.
+            {t.subtitle}
           </p>
         </div>
 
@@ -28,18 +31,18 @@ export default function BillingSettings() {
           <CurrentPlanCard plan={currentPlanData} />
           <BillingHistoryCard history={billingHistoryData} />
         </div>
-        
+
         <div className="grid gap-6">
           <Card>
             <CardHeader>
-              <CardTitle>Available Plans</CardTitle>
+              <CardTitle>{t.availablePlans}</CardTitle>
               <CardDescription>
-                Choose a plan that works best for you.
+                {t.availablePlansDesc}
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <PricingPlans 
-                mode="billing" 
+              <PricingPlans
+                mode="billing"
                 currentPlanId="professional"
                 onPlanSelect={handlePlanSelect}
               />

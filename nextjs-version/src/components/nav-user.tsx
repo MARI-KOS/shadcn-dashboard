@@ -10,6 +10,9 @@ import {
 import Link from "next/link"
 
 import { Logo } from "@/components/logo"
+import { ja } from "@/i18n/ja"
+
+const t = ja.sidebar.user
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -82,19 +85,19 @@ export function NavUser({
               <DropdownMenuItem asChild className="cursor-pointer">
                 <Link href="/settings/account">
                   <CircleUser />
-                  Account
+                  {t.account}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="cursor-pointer">
                 <Link href="/settings/billing">
                   <CreditCard />
-                  Billing
+                  {t.billing}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild className="cursor-pointer">
                 <Link href="/settings/notifications">
                   <BellDot />
-                  Notifications
+                  {t.notifications}
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuGroup>
@@ -102,7 +105,7 @@ export function NavUser({
             <DropdownMenuItem asChild className="cursor-pointer">
               <Link href="/sign-in">
                 <LogOut />
-                Log out
+                {t.logout}
               </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>

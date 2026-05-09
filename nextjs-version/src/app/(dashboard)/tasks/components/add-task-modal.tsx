@@ -30,7 +30,7 @@ import type { Task } from "../data/schema"
 // Extended task schema for the form
 const taskFormSchema = z.object({
   id: z.string(),
-  title: z.string().min(1, "Title is required"),
+  title: z.string().min(1, "タイトルは必須です"),
   description: z.string().optional(),
   status: z.string(),
   category: z.string(),
@@ -127,25 +127,25 @@ export function AddTaskModal({ onAddTask, trigger }: AddTaskModalProps) {
         {trigger || (
           <Button variant="default" size="sm" className="cursor-pointer">
             <Plus className="w-4 h-4" />
-            Add Task
+            タスクを追加
           </Button>
         )}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[525px]">
         <DialogHeader>
-          <DialogTitle>Add New Task</DialogTitle>
+          <DialogTitle>タスクを追加</DialogTitle>
           <DialogDescription>
-            Create a new task to track work and progress. Fill in the details below.
+            作業と進捗を管理する新しいタスクを作成します。以下の詳細を入力してください。
           </DialogDescription>
         </DialogHeader>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Task Title */}
           <div className="space-y-2">
-            <Label htmlFor="title">Task Title *</Label>
+            <Label htmlFor="title">タイトル *</Label>
             <Input
               id="title"
-              placeholder="Enter task title..."
+              placeholder="タイトルを入力..."
               value={formData.title}
               onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
               className={errors.title ? "border-red-500" : ""}
@@ -157,10 +157,10 @@ export function AddTaskModal({ onAddTask, trigger }: AddTaskModalProps) {
 
           {/* Task Description */}
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">説明</Label>
             <Textarea
               id="description"
-              placeholder="Provide additional details about the task..."
+              placeholder="タスクの詳細を入力..."
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
@@ -171,7 +171,7 @@ export function AddTaskModal({ onAddTask, trigger }: AddTaskModalProps) {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Task Status */}
             <div className="space-y-2">
-              <Label htmlFor="status">Status</Label>
+              <Label htmlFor="status">ステータス</Label>
               <Select
                 value={formData.status}
                 onValueChange={(value) => setFormData(prev => ({ ...prev, status: value }))}
@@ -196,7 +196,7 @@ export function AddTaskModal({ onAddTask, trigger }: AddTaskModalProps) {
 
             {/* Task Category */}
             <div className="space-y-2">
-              <Label htmlFor="category">Category</Label>
+              <Label htmlFor="category">カテゴリ</Label>
               <Select
                 value={formData.category}
                 onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
@@ -218,7 +218,7 @@ export function AddTaskModal({ onAddTask, trigger }: AddTaskModalProps) {
           {/* Task Priority - Half Width on Desktop */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label htmlFor="priority">Priority</Label>
+              <Label htmlFor="priority">優先度</Label>
               <Select
                 value={formData.priority}
                 onValueChange={(value) => setFormData(prev => ({ ...prev, priority: value }))}
@@ -242,11 +242,11 @@ export function AddTaskModal({ onAddTask, trigger }: AddTaskModalProps) {
           {/* Action Buttons */}
           <div className="flex justify-end space-x-2 pt-4">
             <Button type="button" variant="outline" onClick={handleCancel} className="cursor-pointer">
-              Cancel
+              キャンセル
             </Button>
             <Button type="submit" className="cursor-pointer">
               <Plus className="w-4 h-4 mr-2" />
-              Create Task
+              追加
             </Button>
           </div>
         </form>

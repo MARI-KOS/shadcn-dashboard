@@ -5,6 +5,9 @@ import { X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Logo } from "./logo"
+import { ja } from "@/i18n/ja"
+
+const t = ja.sidebar.notification
 
 export function SidebarNotification() {
   const [isVisible, setIsVisible] = React.useState(true)
@@ -28,28 +31,28 @@ export function SidebarNotification() {
           <h3 className="flex items-center gap-3 font-semibold text-neutral-900 dark:text-neutral-100 mb-2 mt-1">
             <Logo size={42} className="-mt-1" />
             <div>
-              Welcome to{" "}
-              <a 
-                href="https://shadcnstore.com" 
-                target="_blank" 
+              <a
+                href="https://shadcnstore.com"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="text-primary hover:underline"
               >
                 ShadcnStore
               </a>
+              {t.title.replace('ShadcnStore', '')}
             </div>
           </h3>
           <p className="text-sm text-muted-foreground dark:text-neutral-400 leading-relaxed">
-            Explore our premium Shadcn UI{" "}
-            <a 
-              href="https://shadcnstore.com/blocks" 
-              target="_blank" 
+            {t.body}{" "}
+            <a
+              href="https://shadcnstore.com/blocks"
+              target="_blank"
               rel="noopener noreferrer"
               className="text-primary underline"
             >
-              blocks
-            </a>{" "}
-            to build your next project faster.
+              {t.linkText}
+            </a>
+            {t.suffix}
           </p>
         </div>
       </CardContent>

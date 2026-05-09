@@ -6,6 +6,9 @@ import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { CommandSearch, SearchTrigger } from "@/components/command-search"
 import { ModeToggle } from "@/components/mode-toggle"
+import { ja } from "@/i18n/ja"
+
+const t = ja.common
 
 export function SiteHeader() {
   const [searchOpen, setSearchOpen] = React.useState(false)
@@ -42,7 +45,7 @@ export function SiteHeader() {
                 target="_blank"
                 className="dark:text-foreground"
               >
-                Blocks
+                {t.blocks}
               </a>
             </Button>
             <Button variant="ghost" asChild size="sm" className="hidden sm:flex">
@@ -52,7 +55,7 @@ export function SiteHeader() {
                 target="_blank"
                 className="dark:text-foreground"
               >
-                Landing Page
+                {t.landingPage}
               </a>
             </Button>
             <Button variant="ghost" asChild size="sm" className="hidden sm:flex">

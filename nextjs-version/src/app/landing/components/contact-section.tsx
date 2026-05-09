@@ -17,22 +17,25 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Mail, MessageCircle, Github, BookOpen } from 'lucide-react'
+import { ja } from '@/i18n/ja'
+
+const t = ja.landing.contact
 
 const contactFormSchema = z.object({
   firstName: z.string().min(2, {
-    message: "First name must be at least 2 characters.",
+    message: t.validation.firstNameMin,
   }),
   lastName: z.string().min(2, {
-    message: "Last name must be at least 2 characters.",
+    message: t.validation.lastNameMin,
   }),
   email: z.string().email({
-    message: "Please enter a valid email address.",
+    message: t.validation.emailInvalid,
   }),
   subject: z.string().min(5, {
-    message: "Subject must be at least 5 characters.",
+    message: t.validation.subjectMin,
   }),
   message: z.string().min(10, {
-    message: "Message must be at least 10 characters.",
+    message: t.validation.messageMin,
   }),
 })
 
@@ -59,12 +62,12 @@ export function ContactSection() {
     <section id="contact" className="py-24 sm:py-32">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center mb-16">
-          <Badge variant="outline" className="mb-4">Get In Touch</Badge>
+          <Badge variant="outline" className="mb-4">{t.badge}</Badge>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Need help or have questions?
+            {t.title}
           </h2>
           <p className="text-lg text-muted-foreground">
-            Our team is here to help you get the most out of ShadcnStore. Choose the best way to reach out to us.
+            {t.description}
           </p>
         </div>
 
@@ -75,16 +78,16 @@ export function ContactSection() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <MessageCircle className="h-5 w-5 text-primary" />
-                  Discord Community
+                  {t.discordTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-3">
-                  Join our active community for quick help and discussions with other developers.
+                  {t.discordDescription}
                 </p>
                 <Button variant="outline" size="sm" className="cursor-pointer" asChild>
                   <a href="https://discord.com/invite/XEQhPc9a6p" target="_blank" rel="noopener noreferrer">
-                    Join Discord
+                    {t.discordButton}
                   </a>
                 </Button>
               </CardContent>
@@ -94,16 +97,16 @@ export function ContactSection() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Github className="h-5 w-5 text-primary" />
-                  GitHub Issues
+                  {t.githubTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-3">
-                  Report bugs, request features, or contribute to our open source repository.
+                  {t.githubDescription}
                 </p>
                 <Button variant="outline" size="sm" className="cursor-pointer" asChild>
                   <a href="https://github.com/silicondeck/shadcn-dashboard-landing-template/issues" target="_blank" rel="noopener noreferrer">
-                    View on GitHub
+                    {t.githubButton}
                   </a>
                 </Button>
               </CardContent>
@@ -113,16 +116,16 @@ export function ContactSection() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <BookOpen className="h-5 w-5 text-primary" />
-                  Documentation
+                  {t.docsTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-3">
-                  Browse our comprehensive guides, tutorials, and component documentation.
+                  {t.docsDescription}
                 </p>
                 <Button variant="outline" size="sm" className="cursor-pointer" asChild>
                   <a href="#">
-                    View Docs
+                    {t.docsButton}
                   </a>
                 </Button>
               </CardContent>
@@ -135,7 +138,7 @@ export function ContactSection() {
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
                   <Mail className="h-5 w-5" />
-                  Send us a message
+                  {t.formTitle}
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -147,9 +150,9 @@ export function ContactSection() {
                         name="firstName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>First name</FormLabel>
+                            <FormLabel>{t.firstName}</FormLabel>
                             <FormControl>
-                              <Input placeholder="John" {...field} />
+                              <Input placeholder={t.firstNamePlaceholder} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -160,9 +163,9 @@ export function ContactSection() {
                         name="lastName"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Last name</FormLabel>
+                            <FormLabel>{t.lastName}</FormLabel>
                             <FormControl>
-                              <Input placeholder="Doe" {...field} />
+                              <Input placeholder={t.lastNamePlaceholder} {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -174,9 +177,9 @@ export function ContactSection() {
                       name="email"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Email</FormLabel>
+                          <FormLabel>{t.email}</FormLabel>
                           <FormControl>
-                            <Input type="email" placeholder="john@example.com" {...field} />
+                            <Input type="email" placeholder={t.emailPlaceholder} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -187,9 +190,9 @@ export function ContactSection() {
                       name="subject"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Subject</FormLabel>
+                          <FormLabel>{t.subject}</FormLabel>
                           <FormControl>
-                            <Input placeholder="Component request, bug report, general inquiry..." {...field} />
+                            <Input placeholder={t.subjectPlaceholder} {...field} />
                           </FormControl>
                           <FormMessage />
                         </FormItem>
@@ -200,10 +203,10 @@ export function ContactSection() {
                       name="message"
                       render={({ field }) => (
                         <FormItem>
-                          <FormLabel>Message</FormLabel>
+                          <FormLabel>{t.message}</FormLabel>
                           <FormControl>
                             <Textarea
-                              placeholder="Tell us how we can help you with ShadcnStore components..."
+                              placeholder={t.messagePlaceholder}
                               rows={10}
                               className="min-h-50"
                               {...field}
@@ -214,7 +217,7 @@ export function ContactSection() {
                       )}
                     />
                     <Button type="submit" className="w-full cursor-pointer">
-                      Send Message
+                      {t.sendButton}
                     </Button>
                   </form>
                 </Form>

@@ -28,34 +28,38 @@ import { Logo } from '@/components/logo'
 import { MegaMenu } from '@/components/landing/mega-menu'
 import { ModeToggle } from '@/components/mode-toggle'
 import { useTheme } from '@/hooks/use-theme'
+import { ja } from '@/i18n/ja'
+
+const nav = ja.landing.nav
+const navbarT = ja.landing.navbar
 
 const navigationItems = [
-  { name: 'Home', href: '#hero' },
-  { name: 'Features', href: '#features' },
-  { name: 'Solutions', href: '#features', hasMegaMenu: true },
-  { name: 'Team', href: '#team' },
-  { name: 'Pricing', href: '#pricing' },
-  { name: 'FAQ', href: '#faq' },
-  { name: 'Contact', href: '#contact' },
+  { name: nav.home, href: '#hero' },
+  { name: nav.features, href: '#features' },
+  { name: nav.solutions, href: '#features', hasMegaMenu: true },
+  { name: nav.team, href: '#team' },
+  { name: nav.pricing, href: '#pricing' },
+  { name: nav.faq, href: '#faq' },
+  { name: nav.contact, href: '#contact' },
 ]
 
 // Solutions menu items for mobile
 const solutionsItems = [
-  { title: 'Browse Products' },
-  { name: 'Free Blocks', href: '#free-blocks' },
-  { name: 'Premium Templates', href: '#premium-templates' },
-  { name: 'Admin Dashboards', href: '#admin-dashboards' },
-  { name: 'Landing Pages', href: '#landing-pages' },
-  { title: 'Categories' },
-  { name: 'E-commerce', href: '#ecommerce' },
-  { name: 'SaaS Dashboards', href: '#saas-dashboards' },
-  { name: 'Analytics', href: '#analytics' },
-  { name: 'Authentication', href: '#authentication' },
-  { title: 'Resources' },
-  { name: 'Documentation', href: '#docs' },
-  { name: 'Component Showcase', href: '#showcase' },
-  { name: 'GitHub Repository', href: '#github' },
-  { name: 'Design System', href: '#design-system' }
+  { title: nav.browseProducts },
+  { name: nav.freeBlocks, href: '#free-blocks' },
+  { name: nav.premiumTemplates, href: '#premium-templates' },
+  { name: nav.adminDashboards, href: '#admin-dashboards' },
+  { name: nav.landingPages, href: '#landing-pages' },
+  { title: nav.categories },
+  { name: nav.ecommerce, href: '#ecommerce' },
+  { name: nav.saasDashboards, href: '#saas-dashboards' },
+  { name: nav.analytics, href: '#analytics' },
+  { name: nav.authentication, href: '#authentication' },
+  { title: nav.resources },
+  { name: nav.documentation, href: '#docs' },
+  { name: nav.componentShowcase, href: '#showcase' },
+  { name: nav.githubRepo, href: '#github' },
+  { name: nav.designSystem, href: '#design-system' }
 ]
 
 // Smooth scroll function
@@ -134,14 +138,14 @@ export function LandingNavbar() {
           <Button variant="outline" asChild className="cursor-pointer">
             <Link href="/dashboard" target="_blank" rel="noopener noreferrer">
               <LayoutDashboard className="h-4 w-4 mr-2" />
-              Dashboard
+              {navbarT.dashboard}
             </Link>
           </Button>
           <Button variant="ghost" asChild className="cursor-pointer">
-            <Link href="/auth/sign-in">Sign In</Link>
+            <Link href="/auth/sign-in">{navbarT.signIn}</Link>
           </Button>
           <Button asChild className="cursor-pointer">
-            <Link href="/auth/sign-up">Get Started</Link>
+            <Link href="/auth/sign-up">{navbarT.getStarted}</Link>
           </Button>
         </div>
 
@@ -150,7 +154,7 @@ export function LandingNavbar() {
           <SheetTrigger asChild className="xl:hidden">
             <Button variant="ghost" size="icon" className="cursor-pointer">
               <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle menu</span>
+              <span className="sr-only">{navbarT.toggleMenu}</span>
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-full sm:w-[400px] p-0 gap-0 [&>button]:hidden overflow-hidden flex flex-col">
@@ -251,16 +255,16 @@ export function LandingNavbar() {
                   <Button variant="outline" size="lg" asChild className="w-full cursor-pointer">
                     <Link href="/dashboard">
                       <LayoutDashboard className="size-4" />
-                      Dashboard
+                      {navbarT.dashboard}
                     </Link>
                   </Button>
 
                   <div className="grid grid-cols-2 gap-3">
                     <Button variant="outline" size="lg" asChild className="cursor-pointer">
-                      <Link href="/auth/sign-in">Sign In</Link>
+                      <Link href="/auth/sign-in">{navbarT.signIn}</Link>
                     </Button>
                     <Button asChild size="lg" className="cursor-pointer" >
-                      <Link href="/auth/sign-up">Get Started</Link>
+                      <Link href="/auth/sign-up">{navbarT.getStarted}</Link>
                     </Button>
                   </div>
                 </div>

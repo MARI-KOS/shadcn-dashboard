@@ -44,26 +44,26 @@ interface CalendarsProps {
 // Enhanced calendar data with colors and visibility
 const enhancedCalendars: CalendarGroup[] = [
   {
-    name: "My Calendars",
+    name: "マイカレンダー",
     items: [
-      { id: "personal", name: "Personal", color: "bg-blue-500", visible: true, type: "personal" },
-      { id: "work", name: "Work", color: "bg-green-500", visible: true, type: "work" },
-      { id: "family", name: "Family", color: "bg-pink-500", visible: true, type: "personal" }
+      { id: "personal", name: "個人", color: "bg-blue-500", visible: true, type: "personal" },
+      { id: "work", name: "業務", color: "bg-green-500", visible: true, type: "work" },
+      { id: "family", name: "家族", color: "bg-pink-500", visible: true, type: "personal" }
     ]
   },
   {
-    name: "Favorites",
+    name: "お気に入り",
     items: [
-      { id: "holidays", name: "Holidays", color: "bg-red-500", visible: true, type: "shared" },
-      { id: "birthdays", name: "Birthdays", color: "bg-purple-500", visible: true, type: "personal" }
+      { id: "holidays", name: "祝日", color: "bg-red-500", visible: true, type: "shared" },
+      { id: "birthdays", name: "誕生日", color: "bg-purple-500", visible: true, type: "personal" }
     ]
   },
   {
-    name: "Other",
+    name: "その他",
     items: [
-      { id: "travel", name: "Travel", color: "bg-orange-500", visible: false, type: "personal" },
-      { id: "reminders", name: "Reminders", color: "bg-yellow-500", visible: true, type: "personal" },
-      { id: "deadlines", name: "Deadlines", color: "bg-red-600", visible: true, type: "work" }
+      { id: "travel", name: "旅行", color: "bg-orange-500", visible: false, type: "personal" },
+      { id: "reminders", name: "リマインダー", color: "bg-yellow-500", visible: true, type: "personal" },
+      { id: "deadlines", name: "締め切り", color: "bg-red-600", visible: true, type: "work" }
     ]
   }
 ]
@@ -168,24 +168,24 @@ export function Calendars({
                             </div>
                           </DropdownMenuTrigger>
                           <DropdownMenuContent align="end" side="right">
-                            <DropdownMenuItem 
+                            <DropdownMenuItem
                               onClick={() => onCalendarEdit?.(item.id)}
                               className="cursor-pointer"
                             >
-                              Edit calendar
+                              カレンダーを編集
                             </DropdownMenuItem>
-                            <DropdownMenuItem 
+                            <DropdownMenuItem
                               onClick={() => handleToggleVisibility(item.id)}
                               className="cursor-pointer"
                             >
-                              {item.visible ? "Hide" : "Show"} calendar
+                              {item.visible ? "非表示にする" : "表示する"}
                             </DropdownMenuItem>
                             <DropdownMenuSeparator />
-                            <DropdownMenuItem 
+                            <DropdownMenuItem
                               onClick={() => onCalendarDelete?.(item.id)}
                               className="cursor-pointer text-destructive"
                             >
-                              Delete calendar
+                              カレンダーを削除
                             </DropdownMenuItem>
                           </DropdownMenuContent>
                         </DropdownMenu>

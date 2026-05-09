@@ -5,6 +5,9 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
+import { ja } from "@/i18n/ja"
+
+const t = ja.auth.signUp
 
 export function SignupForm2({
   className,
@@ -13,53 +16,46 @@ export function SignupForm2({
   return (
     <form className={cn("flex flex-col gap-6", className)} {...props}>
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Create your account</h1>
+        <h1 className="text-2xl font-bold">{t.title}</h1>
         <p className="text-muted-foreground text-sm text-balance">
-          Enter your information to create a new account
+          {t.subtitle}
         </p>
       </div>
       <div className="grid gap-6">
         <div className="grid grid-cols-2 gap-3">
           <div className="grid gap-3">
-            <Label htmlFor="firstName">First Name</Label>
-            <Input id="firstName" placeholder="John" required />
+            <Label htmlFor="firstName">{t.firstName}</Label>
+            <Input id="firstName" placeholder={t.firstNamePlaceholder} required />
           </div>
           <div className="grid gap-3">
-            <Label htmlFor="lastName">Last Name</Label>
-            <Input id="lastName" placeholder="Doe" required />
+            <Label htmlFor="lastName">{t.lastName}</Label>
+            <Input id="lastName" placeholder={t.lastNamePlaceholder} required />
           </div>
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" required />
+          <Label htmlFor="email">{t.email}</Label>
+          <Input id="email" type="email" placeholder={t.emailPlaceholder} required />
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="password">Password</Label>
+          <Label htmlFor="password">{t.password}</Label>
           <Input id="password" type="password" required />
         </div>
         <div className="grid gap-3">
-          <Label htmlFor="confirmPassword">Confirm Password</Label>
+          <Label htmlFor="confirmPassword">{t.confirmPassword}</Label>
           <Input id="confirmPassword" type="password" required />
         </div>
         <div className="flex items-center space-x-2">
           <Checkbox id="terms" required />
           <Label htmlFor="terms" className="text-sm">
-            I agree to the{" "}
-            <a href="#" className="underline underline-offset-4 hover:text-primary">
-              Terms of Service
-            </a>{" "}
-            and{" "}
-            <a href="#" className="underline underline-offset-4 hover:text-primary">
-              Privacy Policy
-            </a>
+            {t.agreeTerms}
           </Label>
         </div>
         <Button type="submit" className="w-full cursor-pointer">
-          Create Account
+          {t.createButton}
         </Button>
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
           <span className="bg-background text-muted-foreground relative z-10 px-2">
-            Or continue with
+            以下でも続行できます
           </span>
         </div>
         <Button variant="outline" className="w-full cursor-pointer">
@@ -69,13 +65,13 @@ export function SignupForm2({
               fill="currentColor"
             />
           </svg>
-          Sign up with GitHub
+          GitHubで登録
         </Button>
       </div>
       <div className="text-center text-sm">
-        Already have an account?{" "}
+        {t.hasAccount}{" "}
         <a href="/auth/sign-in-2" className="underline underline-offset-4">
-          Sign in
+          {t.signInLink}
         </a>
       </div>
     </form>

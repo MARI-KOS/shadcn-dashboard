@@ -43,11 +43,11 @@ interface EventFormProps {
 }
 
 const eventTypes = [
-  { value: "meeting", label: "Meeting", color: "bg-blue-500" },
-  { value: "event", label: "Event", color: "bg-green-500" },
-  { value: "personal", label: "Personal", color: "bg-pink-500" },
-  { value: "task", label: "Task", color: "bg-orange-500" },
-  { value: "reminder", label: "Reminder", color: "bg-purple-500" }
+  { value: "meeting", label: "ミーティング", color: "bg-blue-500" },
+  { value: "event", label: "イベント", color: "bg-green-500" },
+  { value: "personal", label: "個人", color: "bg-pink-500" },
+  { value: "task", label: "タスク", color: "bg-orange-500" },
+  { value: "reminder", label: "リマインダー", color: "bg-purple-500" }
 ]
 
 const timeSlots = [
@@ -58,7 +58,7 @@ const timeSlots = [
 ]
 
 const durationOptions = [
-  "15 min", "30 min", "45 min", "1 hour", "1.5 hours", "2 hours", "3 hours", "All day"
+  "15分", "30分", "45分", "1時間", "1時間30分", "2時間", "3時間", "終日"
 ]
 
 export function EventForm({ event, open, onOpenChange, onSave, onDelete }: EventFormProps) {
@@ -120,10 +120,10 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <div className={cn("w-3 h-3 rounded-full", selectedEventType?.color)} />
-            {event ? "Edit Event" : "Create New Event"}
+            {event ? "イベントを編集" : "新しいイベントを作成"}
           </DialogTitle>
           <DialogDescription>
-            {event ? "Make changes to this event" : "Add a new event to your calendar"}
+            {event ? "このイベントを編集します" : "カレンダーに新しいイベントを追加します"}
           </DialogDescription>
         </DialogHeader>
 
@@ -132,11 +132,11 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
           <div className="space-y-2">
             <Label htmlFor="title" className="flex items-center gap-2">
               <Type className="w-4 h-4" />
-              Event Title
+              イベントタイトル
             </Label>
             <Input
               id="title"
-              placeholder="Enter event title..."
+              placeholder="タイトルを入力..."
               value={formData.title}
               onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
               className="text-lg font-medium"
@@ -148,7 +148,7 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
             <div className="space-y-2">
               <Label className="flex items-center gap-2">
                 <Tag className="w-4 h-4" />
-                Event Type
+                イベント種別
               </Label>
               <Select value={formData.type} onValueChange={(value) => setFormData(prev => ({ ...prev, type: value as CalendarEvent["type"] }))}>
                 <SelectTrigger className="w-full">
@@ -173,7 +173,7 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
             <div className="space-y-2">
               <Label className="flex items-center gap-2">
                 <CalendarIcon className="w-4 h-4" />
-                Date
+                日付
               </Label>
               <Popover open={showCalendar} onOpenChange={setShowCalendar}>
                 <PopoverTrigger asChild>
@@ -200,7 +200,7 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
             <div className="space-y-2">
               <Label className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                Time
+                時間
               </Label>
               <Select value={formData.time} onValueChange={(value) => setFormData(prev => ({ ...prev, time: value }))}>
                 <SelectTrigger className="w-full">
@@ -218,7 +218,7 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
           {/* Duration and All Day */}
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
-              <Label>Duration</Label>
+              <Label>所要時間</Label>
               <Select value={formData.duration} onValueChange={(value) => setFormData(prev => ({ ...prev, duration: value }))}>
                 <SelectTrigger className="w-full">
                   <SelectValue />
@@ -232,7 +232,7 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
             </div>
 
             <div className="space-y-2">
-              <Label>Options</Label>
+              <Label>オプション</Label>
               <div className="flex items-center space-x-4 h-10">
                 <div className="flex items-center space-x-2">
                   <Switch
@@ -240,7 +240,7 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
                     checked={formData.allDay}
                     onCheckedChange={(checked) => setFormData(prev => ({ ...prev, allDay: checked }))}
                   />
-                  <Label htmlFor="all-day" className="text-sm">All day</Label>
+                  <Label htmlFor="all-day" className="text-sm">終日</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Switch
@@ -248,7 +248,7 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
                     checked={formData.reminder}
                     onCheckedChange={(checked) => setFormData(prev => ({ ...prev, reminder: checked }))}
                   />
-                  <Label htmlFor="reminder" className="text-sm">Reminder</Label>
+                  <Label htmlFor="reminder" className="text-sm">リマインダー</Label>
                 </div>
               </div>
             </div>
@@ -258,11 +258,11 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
           <div className="space-y-2">
             <Label htmlFor="location" className="flex items-center gap-2">
               <MapPin className="w-4 h-4" />
-              Location
+              場所
             </Label>
             <Input
               id="location"
-              placeholder="Add location..."
+              placeholder="場所を追加..."
               value={formData.location}
               onChange={(e) => setFormData(prev => ({ ...prev, location: e.target.value }))}
             />
@@ -272,16 +272,16 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
           <div className="space-y-2">
             <Label className="flex items-center gap-2">
               <Users className="w-4 h-4" />
-              Attendees
+              参加者
             </Label>
             <div className="flex gap-2">
               <Input
-                placeholder="Add attendee..."
+                placeholder="参加者を追加..."
                 value={newAttendee}
                 onChange={(e) => setNewAttendee(e.target.value)}
                 onKeyPress={(e) => e.key === "Enter" && addAttendee()}
               />
-              <Button onClick={addAttendee} variant="outline" className="cursor-pointer">Add</Button>
+              <Button onClick={addAttendee} variant="outline" className="cursor-pointer">追加</Button>
             </div>
             {formData.attendees.length > 0 && (
               <div className="flex flex-wrap gap-2 mt-2">
@@ -308,10 +308,10 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
 
           {/* Description */}
           <div className="space-y-2">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="description">説明</Label>
             <Textarea
               id="description"
-              placeholder="Add description..."
+              placeholder="説明を追加..."
               value={formData.description}
               onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
               rows={3}
@@ -321,15 +321,15 @@ export function EventForm({ event, open, onOpenChange, onSave, onDelete }: Event
           {/* Actions */}
           <div className="flex gap-3 pt-6">
             <Button onClick={handleSave} className="flex-1 cursor-pointer">
-              {event ? "Update Event" : "Create Event"}
+              {event ? "更新" : "作成"}
             </Button>
             {event && onDelete && (
               <Button onClick={handleDelete} variant="destructive" className="cursor-pointer">
-                Delete
+                削除
               </Button>
             )}
             <Button onClick={() => onOpenChange(false)} variant="outline" className="cursor-pointer">
-              Cancel
+              キャンセル
             </Button>
           </div>
         </div>

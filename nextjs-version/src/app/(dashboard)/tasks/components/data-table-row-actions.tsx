@@ -36,14 +36,14 @@ export function DataTableRowActions<TData>({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[160px]">
-        <DropdownMenuItem className="cursor-pointer">View Task</DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">Edit Task</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">タスクを表示</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">タスクを編集</DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer">Duplicate</DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">Mark as Favorite</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">複製</DropdownMenuItem>
+        <DropdownMenuItem className="cursor-pointer">お気に入りに追加</DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem className="cursor-pointer" variant="destructive">
-          Delete
+          削除
           <DropdownMenuShortcut className="text-destructive">⌘⌫</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>

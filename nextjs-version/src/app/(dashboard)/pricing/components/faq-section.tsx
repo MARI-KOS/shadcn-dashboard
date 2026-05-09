@@ -1,5 +1,6 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { ja } from "@/i18n/ja"
 
 interface FAQ {
   id: number
@@ -15,9 +16,9 @@ export function FAQSection({ faqs }: FAQSectionProps) {
   return (
     <Card className="mt-6 sm:mt-8 lg:mt-12">
       <CardHeader className="text-center">
-        <CardTitle className="text-2xl">Frequently Asked Questions</CardTitle>
+        <CardTitle className="text-2xl">{ja.pricing.frequentlyAskedQuestions}</CardTitle>
         <CardDescription>
-          Get answers to the most common questions about our pricing and plans
+          {ja.pricing.frequentlyAskedQuestionsDesc}
         </CardDescription>
       </CardHeader>
       <CardContent className="mt-6 sm:mt-8">

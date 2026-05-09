@@ -5,6 +5,9 @@ import { TopProducts } from "./components/top-products"
 import { CustomerInsights } from "./components/customer-insights"
 import { QuickActions } from "./components/quick-actions"
 import { RevenueBreakdown } from "./components/revenue-breakdown"
+import { ja } from "@/i18n/ja"
+
+const t = ja.dashboard2
 
 export default function Dashboard2() {
   return (
@@ -13,9 +16,9 @@ export default function Dashboard2() {
 
         <div className="flex md:flex-row flex-col md:items-center justify-between gap-4 md:gap-6">
           <div className="flex flex-col gap-2">
-            <h1 className="text-2xl font-bold tracking-tight">Business Dashboard</h1>
+            <h1 className="text-2xl font-bold tracking-tight">{t.title}</h1>
             <p className="text-muted-foreground">
-              Monitor your business performance and key metrics in real-time
+              {t.subtitle}
             </p>
           </div>
           <QuickActions />

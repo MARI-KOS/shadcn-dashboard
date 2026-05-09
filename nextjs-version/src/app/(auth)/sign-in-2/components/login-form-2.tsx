@@ -4,6 +4,9 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { ja } from "@/i18n/ja"
+
+const t = ja.auth.signIn
 
 export function LoginForm2({
   className,
@@ -12,34 +15,34 @@ export function LoginForm2({
   return (
     <form className={cn("flex flex-col gap-6", className)} {...props} action="/dashboard">
       <div className="flex flex-col items-center gap-2 text-center">
-        <h1 className="text-2xl font-bold">Login to your account</h1>
+        <h1 className="text-2xl font-bold">{t.title}</h1>
         <p className="text-muted-foreground text-sm text-balance">
-          Enter your email below to login to your account
+          {t.subtitle}
         </p>
       </div>
       <div className="grid gap-6">
         <div className="grid gap-3">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="test@example.com" defaultValue="test@example.com" required />
+          <Label htmlFor="email">{t.email}</Label>
+          <Input id="email" type="email" placeholder={t.emailPlaceholder} defaultValue="test@example.com" required />
         </div>
         <div className="grid gap-3">
           <div className="flex items-center">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">{t.password}</Label>
             <a
               href="/auth/forgot-password-2"
               className="ml-auto text-sm underline-offset-4 hover:underline"
             >
-              Forgot your password?
+              {t.forgotPassword}
             </a>
           </div>
           <Input id="password" type="password" defaultValue="password" required />
         </div>
         <Button type="submit" className="w-full cursor-pointer">
-          Login
+          {t.loginButton}
         </Button>
         <div className="after:border-border relative text-center text-sm after:absolute after:inset-0 after:top-1/2 after:z-0 after:flex after:items-center after:border-t">
           <span className="bg-background text-muted-foreground relative z-10 px-2">
-            Or continue with
+            以下でも続行できます
           </span>
         </div>
         <Button variant="outline" className="w-full cursor-pointer">
@@ -49,13 +52,13 @@ export function LoginForm2({
               fill="currentColor"
             />
           </svg>
-          Login with GitHub
+          GitHubでログイン
         </Button>
       </div>
       <div className="text-center text-sm">
-        Don&apos;t have an account?{" "}
+        {t.noAccount}{" "}
         <a href="/auth/sign-up-2" className="underline underline-offset-4">
-          Sign up
+          {t.signUpLink}
         </a>
       </div>
     </form>

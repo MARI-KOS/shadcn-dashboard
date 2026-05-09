@@ -6,6 +6,7 @@ import { Calendars } from "./calendars"
 import { DatePicker } from "./date-picker"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
+import { ja } from "@/i18n/ja"
 
 interface CalendarSidebarProps {
   selectedDate?: Date
@@ -33,7 +34,7 @@ export function CalendarSidebar({
           onClick={onNewEvent}
         >
           <Plus className="w-4 h-4 mr-2" />
-          Add New Event
+          新しいイベント
         </Button>
       </div>
 
@@ -70,7 +71,7 @@ export function CalendarSidebar({
           onClick={onNewCalendar}
         >
           <Plus className="w-4 h-4 mr-2" />
-          New Calendar
+          新しいカレンダー
         </Button>
       </div>
     </div>

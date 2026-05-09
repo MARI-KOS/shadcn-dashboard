@@ -21,6 +21,9 @@ import { Upload } from "lucide-react"
 import { useRef, useState } from "react"
 import { Separator } from "@/components/ui/separator"
 import { Logo } from "@/components/logo"
+import { ja } from "@/i18n/ja"
+
+const t = ja.settings.user
 
 const userFormSchema = z.object({
   firstName: z.string().min(1, "First name is required"),
@@ -42,7 +45,7 @@ export default function UserSettingsPage() {
   const fileInputRef = useRef<HTMLInputElement>(null)
   const [profileImage, setProfileImage] = useState<string | null>(null)
   const [useDefaultIcon, setUseDefaultIcon] = useState(true)
-  
+
   const form = useForm<UserFormValues>({
     resolver: zodResolver(userFormSchema),
     defaultValues: {
@@ -95,8 +98,8 @@ export default function UserSettingsPage() {
           <form onSubmit={form.handleSubmit(onSubmit)}>
             <Card>
               <CardHeader>
-                <CardTitle>Profile Settings</CardTitle>
-                <CardDescription>Update your personal information and preferences</CardDescription>
+                <CardTitle>{t.title}</CardTitle>
+                <CardDescription>{t.subtitle}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-6">
             {/* Profile Picture Section */}
@@ -113,26 +116,26 @@ export default function UserSettingsPage() {
               )}
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2">
-                  <Button 
-                    variant="default" 
+                  <Button
+                    variant="default"
                     size="sm"
                     onClick={handleFileUpload}
                     className="cursor-pointer"
                   >
                     <Upload className="mr-2 h-4 w-4" />
-                    Upload new photo
+                    {t.uploadPhoto}
                   </Button>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     size="sm"
                     onClick={handleReset}
                     className="cursor-pointer"
                   >
-                    Reset
+                    {t.reset}
                   </Button>
                 </div>
                 <p className="text-xs text-muted-foreground">
-                  Allowed JPG, GIF or PNG. Max size of 800K
+                  {t.photoHint}
                 </p>
               </div>
               <input
@@ -153,9 +156,9 @@ export default function UserSettingsPage() {
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>First Name</FormLabel>
+                    <FormLabel>{t.firstName}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your first name" {...field} />
+                      <Input placeholder={t.firstNamePlaceholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -168,9 +171,9 @@ export default function UserSettingsPage() {
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Last Name</FormLabel>
+                    <FormLabel>{t.lastName}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your last name" {...field} />
+                      <Input placeholder={t.lastNamePlaceholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -183,9 +186,9 @@ export default function UserSettingsPage() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>E-mail</FormLabel>
+                    <FormLabel>{t.email}</FormLabel>
                     <FormControl>
-                      <Input type="email" placeholder="Enter your email" {...field} />
+                      <Input type="email" placeholder={t.emailPlaceholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -198,9 +201,9 @@ export default function UserSettingsPage() {
                 name="company"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company</FormLabel>
+                    <FormLabel>{t.company}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your company" {...field} />
+                      <Input placeholder={t.companyPlaceholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -213,9 +216,9 @@ export default function UserSettingsPage() {
                 name="phone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Phone Number</FormLabel>
+                    <FormLabel>{t.phone}</FormLabel>
                     <FormControl>
-                      <Input type="tel" placeholder="Enter your phone number" {...field} />
+                      <Input type="tel" placeholder={t.phonePlaceholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -228,9 +231,9 @@ export default function UserSettingsPage() {
                 name="location"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Location</FormLabel>
+                    <FormLabel>{t.location}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your location" {...field} />
+                      <Input placeholder={t.locationPlaceholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -243,9 +246,9 @@ export default function UserSettingsPage() {
                 name="website"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Website</FormLabel>
+                    <FormLabel>{t.website}</FormLabel>
                     <FormControl>
-                      <Input type="url" placeholder="Enter your website" {...field} />
+                      <Input type="url" placeholder={t.websitePlaceholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -258,11 +261,11 @@ export default function UserSettingsPage() {
                 name="language"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Language</FormLabel>
+                    <FormLabel>{t.language}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Select Language" />
+                          <SelectValue placeholder={t.languagePlaceholder} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -285,9 +288,9 @@ export default function UserSettingsPage() {
                 name="role"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Role</FormLabel>
+                    <FormLabel>{t.role}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your role" {...field} />
+                      <Input placeholder={t.rolePlaceholder} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -300,11 +303,11 @@ export default function UserSettingsPage() {
                 name="timezone"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Timezone</FormLabel>
+                    <FormLabel>{t.timezone}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger className="w-full">
-                          <SelectValue placeholder="Select Timezone" />
+                          <SelectValue placeholder={t.timezonePlaceholder} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -330,10 +333,10 @@ export default function UserSettingsPage() {
               name="bio"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Bio</FormLabel>
+                  <FormLabel>{t.bio}</FormLabel>
                   <FormControl>
-                    <Textarea 
-                      placeholder="Tell us a little about yourself..." 
+                    <Textarea
+                      placeholder={t.bioPlaceholder}
                       className="min-h-[100px]"
                       {...field}
                     />
@@ -346,10 +349,10 @@ export default function UserSettingsPage() {
             {/* Action Buttons */}
             <div className="flex justify-start gap-3">
               <Button type="submit" className="cursor-pointer">
-                Save Changes
+                {t.saveChanges}
               </Button>
               <Button variant="outline" type="button" className="cursor-pointer">
-                Cancel
+                {t.cancel}
               </Button>
             </div>
           </CardContent>

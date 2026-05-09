@@ -5,6 +5,7 @@ import { z } from "zod"
 import { ArrowUp, BarChart3, CheckCircle2, Clock, ListTodo } from "lucide-react"
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { ja } from "@/i18n/ja"
 import { columns } from "./components/columns"
 import { DataTable } from "./components/data-table"
 import { taskSchema, type Task } from "./data/schema"
@@ -16,6 +17,7 @@ async function getTasks() {
 }
 
 export default function TaskPage() {
+  const t = ja.tasks
   const [tasks, setTasks] = useState<z.infer<typeof taskSchema>[]>([])
   const [loading, setLoading] = useState(true)
 
@@ -49,7 +51,7 @@ export default function TaskPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-96">
-        <div className="text-muted-foreground">Loading tasks...</div>
+        <div className="text-muted-foreground">タスクを読み込み中...</div>
       </div>
     )
   }
@@ -58,9 +60,9 @@ export default function TaskPage() {
     <>
       {/* Page Header */}
       <div className="flex flex-col gap-2 px-4 md:px-6">
-        <h1 className="text-2xl font-bold tracking-tight">Tasks</h1>
+        <h1 className="text-2xl font-bold tracking-tight">{t.title}</h1>
         <p className="text-muted-foreground">
-          A powerful task and issue tracker built with Tanstack Table.
+          {t.subtitle}
         </p>
       </div>
 
@@ -68,9 +70,9 @@ export default function TaskPage() {
       <div className="md:hidden px-4 md:px-6">
         <div className="flex items-center justify-center h-96 border rounded-lg bg-muted/20">
           <div className="text-center p-8">
-            <h3 className="text-lg font-semibold mb-2">Tasks Dashboard</h3>
+            <h3 className="text-lg font-semibold mb-2">{t.title}</h3>
             <p className="text-muted-foreground">
-              Please use a larger screen to view the full tasks interface.
+              {t.mobileMessage}
             </p>
           </div>
         </div>
@@ -84,7 +86,7 @@ export default function TaskPage() {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground text-sm font-medium">Total Tasks</p>
+                  <p className="text-muted-foreground text-sm font-medium">{t.totalTasks}</p>
                   <div className="mt-1 flex items-baseline gap-2">
                     <span className="text-2xl font-bold">{stats.total}</span>
                     <span className="flex items-center gap-0.5 text-sm text-green-500">
@@ -104,7 +106,7 @@ export default function TaskPage() {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground text-sm font-medium">Completed</p>
+                  <p className="text-muted-foreground text-sm font-medium">{t.completed}</p>
                   <div className="mt-1 flex items-baseline gap-2">
                     <span className="text-2xl font-bold">{stats.completed}</span>
                     <span className="flex items-center gap-0.5 text-sm text-green-500">
@@ -124,7 +126,7 @@ export default function TaskPage() {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground text-sm font-medium">In Progress</p>
+                  <p className="text-muted-foreground text-sm font-medium">{t.inProgress}</p>
                   <div className="mt-1 flex items-baseline gap-2">
                     <span className="text-2xl font-bold">{stats.inProgress}</span>
                     <span className="flex items-center gap-0.5 text-sm text-green-500">
@@ -144,7 +146,7 @@ export default function TaskPage() {
             <CardContent>
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-muted-foreground text-sm font-medium">Pending</p>
+                  <p className="text-muted-foreground text-sm font-medium">{t.pending}</p>
                   <div className="mt-1 flex items-baseline gap-2">
                     <span className="text-2xl font-bold">{stats.pending}</span>
                     <span className="flex items-center gap-0.5 text-sm text-orange-500">
@@ -164,9 +166,9 @@ export default function TaskPage() {
         {/* Data Table */}
         <Card>
           <CardHeader>
-            <CardTitle>Task Management</CardTitle>
+            <CardTitle>{t.taskManagement}</CardTitle>
             <CardDescription>
-              View, filter, and manage all your project tasks in one place
+              {t.taskManagementDesc}
             </CardDescription>
           </CardHeader>
           <CardContent>

@@ -2,6 +2,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from '@/components/ui/button'
 import { ArrowRight, Sparkles, Shield, Truck, Clock } from 'lucide-react'
+import { ja } from "@/i18n/ja"
 
 interface FeatureItem {
   id: number
@@ -41,7 +42,7 @@ export function FeaturesGrid({ features }: FeaturesGridProps) {
                   size='sm'
                   className='text-muted-foreground hover:text-foreground h-auto cursor-pointer !p-0 text-sm'
                 >
-                  Learn more
+                  {ja.faqs.learnMore}
                   <ArrowRight className='ms-1.5 size-4' />
                 </Button>
               </CardContent>

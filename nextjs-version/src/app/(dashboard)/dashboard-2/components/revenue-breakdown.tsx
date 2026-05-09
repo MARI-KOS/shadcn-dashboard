@@ -7,6 +7,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ChartContainer, ChartStyle, ChartTooltip, ChartTooltipContent } from "@/components/ui/chart"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Button } from "@/components/ui/button"
+import { ja } from "@/i18n/ja"
+
+const t = ja.dashboard2
 
 const revenueData = [
   { category: "subscriptions", value: 45, amount: 24500, fill: "var(--color-subscriptions)" },
@@ -17,25 +20,25 @@ const revenueData = [
 
 const chartConfig = {
   revenue: {
-    label: "Revenue",
+    label: t.revenue,
   },
   amount: {
-    label: "Amount",
+    label: t.revenue,
   },
   subscriptions: {
-    label: "Subscriptions",
+    label: t.subscriptions,
     color: "var(--chart-1)",
   },
   sales: {
-    label: "One-time Sales",
+    label: t.salesCategory,
     color: "var(--chart-2)",
   },
   services: {
-    label: "Services",
+    label: t.services,
     color: "var(--chart-3)",
   },
   partnerships: {
-    label: "Partnerships",
+    label: t.partnerships,
     color: "var(--chart-4)",
   },
 }
@@ -56,16 +59,16 @@ export function RevenueBreakdown() {
       <ChartStyle id={id} config={chartConfig} />
       <CardHeader className="flex flex-col space-y-2 sm:flex-row sm:items-center sm:justify-between sm:space-y-0 pb-2">
         <div>
-          <CardTitle>Revenue Breakdown</CardTitle>
-          <CardDescription>Revenue distribution by source</CardDescription>
+          <CardTitle>{t.revenueBreakdown}</CardTitle>
+          <CardDescription>{t.revenueBySource}</CardDescription>
         </div>
         <div className="flex items-center space-x-2">
           <Select value={activeCategory} onValueChange={setActiveCategory}>
             <SelectTrigger
               className="w-[175px] rounded-lg cursor-pointer"
-              aria-label="Select a category"
+              aria-label={t.selectCategory}
             >
-              <SelectValue placeholder="Select category" />
+              <SelectValue placeholder={t.selectCategory} />
             </SelectTrigger>
             <SelectContent align="end" className="rounded-lg">
               {categories.map((key) => {
@@ -96,7 +99,7 @@ export function RevenueBreakdown() {
             </SelectContent>
           </Select>
           <Button variant="outline" className="cursor-pointer">
-            Export
+            {t.export}
           </Button>
         </div>
       </CardHeader>
@@ -155,7 +158,7 @@ export function RevenueBreakdown() {
                               y={(viewBox.cy || 0) + 24}
                               className="fill-muted-foreground"
                             >
-                              Revenue
+                              {t.revenue}
                             </tspan>
                           </text>
                         )

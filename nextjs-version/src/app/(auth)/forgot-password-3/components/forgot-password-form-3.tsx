@@ -8,6 +8,9 @@ import { Label } from "@/components/ui/label"
 import { Logo } from "@/components/logo"
 import Link from "next/link"
 import Image from "next/image"
+import { ja } from "@/i18n/ja"
+
+const t = ja.auth.forgotPassword
 
 export function ForgotPasswordForm3({
   className,
@@ -28,27 +31,27 @@ export function ForgotPasswordForm3({
                 </Link>
               </div>
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">Forgot your password?</h1>
+                <h1 className="text-2xl font-bold">{t.title}</h1>
                 <p className="text-muted-foreground text-balance">
-                  Enter your email to reset your ShadcnStore account password
+                  {t.subtitle}
                 </p>
               </div>
               <div className="grid gap-3">
-                <Label htmlFor="email">Email</Label>
+                <Label htmlFor="email">{t.email}</Label>
                 <Input
                   id="email"
                   type="email"
-                  placeholder="m@example.com"
+                  placeholder={t.emailPlaceholder}
                   required
                 />
               </div>
               <Button type="submit" className="w-full cursor-pointer">
-                Send Reset Link
+                {t.sendButton}
               </Button>
               <div className="text-center text-sm">
-                Remember your password?{" "}
+                {t.rememberPassword}{" "}
                 <a href="/auth/sign-in-3" className="underline underline-offset-4">
-                  Back to sign in
+                  {t.backToSignIn}
                 </a>
               </div>
             </div>
@@ -64,8 +67,7 @@ export function ForgotPasswordForm3({
         </CardContent>
       </Card>
       <div className="text-muted-foreground *:[a]:hover:text-primary text-center text-xs text-balance *:[a]:underline *:[a]:underline-offset-4">
-        By clicking continue, you agree to our <a href="#">Terms of Service</a>{" "}
-        and <a href="#">Privacy Policy</a>.
+        {ja.auth.signIn.terms}<a href="#">{ja.auth.signIn.termsLink}</a>{ja.auth.signIn.and}<a href="#">{ja.auth.signIn.privacyLink}</a>{ja.auth.signIn.termsEnd}
       </div>
     </div>
   )

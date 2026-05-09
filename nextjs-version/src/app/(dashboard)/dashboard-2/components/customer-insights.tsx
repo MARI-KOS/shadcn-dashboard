@@ -8,27 +8,30 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 import { Button } from "@/components/ui/button"
 import { Users, MapPin, TrendingUp, Target, ArrowUpIcon, UserIcon } from "lucide-react"
+import { ja } from "@/i18n/ja"
+
+const t = ja.dashboard2
 
 const customerGrowthData = [
-  { month: "Jan", new: 245, returning: 890, churn: 45 },
-  { month: "Feb", new: 312, returning: 934, churn: 52 },
-  { month: "Mar", new: 289, returning: 1023, churn: 38 },
-  { month: "Apr", new: 456, returning: 1156, churn: 61 },
-  { month: "May", new: 523, returning: 1298, churn: 47 },
-  { month: "Jun", new: 634, returning: 1445, churn: 55 },
+  { month: "1月", new: 245, returning: 890, churn: 45 },
+  { month: "2月", new: 312, returning: 934, churn: 52 },
+  { month: "3月", new: 289, returning: 1023, churn: 38 },
+  { month: "4月", new: 456, returning: 1156, churn: 61 },
+  { month: "5月", new: 523, returning: 1298, churn: 47 },
+  { month: "6月", new: 634, returning: 1445, churn: 55 },
 ]
 
 const chartConfig = {
   new: {
-    label: "New Customers",
+    label: t.newCustomersLabel,
     color: "var(--chart-1)",
   },
   returning: {
-    label: "Returning",
+    label: t.returningLabel,
     color: "var(--chart-2)",
   },
   churn: {
-    label: "Churned",
+    label: t.churnedLabel,
     color: "var(--chart-3)",
   },
 }
@@ -42,11 +45,11 @@ const demographicsData = [
 ]
 
 const regionsData = [
-  { region: "North America", customers: 6847, revenue: "$847,523", growth: "+12.3%", growthColor: "text-green-600" },
-  { region: "Europe", customers: 4521, revenue: "$563,891", growth: "+9.7%", growthColor: "text-green-600" },
-  { region: "Asia Pacific", customers: 2892, revenue: "$321,456", growth: "+18.4%", growthColor: "text-blue-600" },
-  { region: "Latin America", customers: 1123, revenue: "$187,234", growth: "+15.8%", growthColor: "text-green-600" },
-  { region: "Others", customers: 464, revenue: "$67,891", growth: "+5.2%", growthColor: "text-orange-600" },
+  { region: "北米", customers: 6847, revenue: "$847,523", growth: "+12.3%", growthColor: "text-green-600" },
+  { region: "ヨーロッパ", customers: 4521, revenue: "$563,891", growth: "+9.7%", growthColor: "text-green-600" },
+  { region: "アジア太平洋", customers: 2892, revenue: "$321,456", growth: "+18.4%", growthColor: "text-blue-600" },
+  { region: "ラテンアメリカ", customers: 1123, revenue: "$187,234", growth: "+15.8%", growthColor: "text-green-600" },
+  { region: "その他", customers: 464, revenue: "$67,891", growth: "+5.2%", growthColor: "text-orange-600" },
 ]
 
 export function CustomerInsights() {
@@ -55,8 +58,8 @@ export function CustomerInsights() {
   return (
     <Card className="h-fit">
       <CardHeader>
-        <CardTitle>Customer Insights</CardTitle>
-        <CardDescription>Growth trends and demographics</CardDescription>
+        <CardTitle>{t.customerInsights}</CardTitle>
+        <CardDescription>{t.growthTrendsDemographics}</CardDescription>
       </CardHeader>
       <CardContent>
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -66,21 +69,21 @@ export function CustomerInsights() {
               className="cursor-pointer flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-background data-[state=active]:shadow-sm data-[state=active]:text-foreground"
             >
               <TrendingUp className="h-4 w-4" />
-              <span className="hidden sm:inline">Growth</span>
+              <span className="hidden sm:inline">{t.growth}</span>
             </TabsTrigger>
             <TabsTrigger
               value="demographics"
               className="cursor-pointer flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-background data-[state=active]:shadow-sm data-[state=active]:text-foreground"
             >
               <UserIcon className="h-4 w-4" />
-              <span className="hidden sm:inline">Demographics</span>
+              <span className="hidden sm:inline">{t.demographics}</span>
             </TabsTrigger>
             <TabsTrigger
               value="regions"
               className="cursor-pointer flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-all data-[state=active]:bg-background data-[state=active]:shadow-sm data-[state=active]:text-foreground"
             >
               <MapPin className="h-4 w-4" />
-              <span className="hidden sm:inline">Regions</span>
+              <span className="hidden sm:inline">{t.regions}</span>
             </TabsTrigger>
           </TabsList>
 
@@ -90,7 +93,7 @@ export function CustomerInsights() {
               <div className="grid grid-cols-10 gap-6">
                 {/* Chart Area - 70% */}
                 <div className="col-span-10 xl:col-span-7">
-                  <h3 className="text-sm font-medium text-muted-foreground mb-6">Customer Growth Trends</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-6">{t.customerGrowthTrends}</h3>
                   <ChartContainer config={chartConfig} className="h-[375px] w-full">
                     <BarChart data={customerGrowthData} margin={{ top: 20, right: 20, bottom: 20, left: 0 }}>
                       <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
@@ -118,41 +121,41 @@ export function CustomerInsights() {
 
                 {/* Key Metrics - 30% */}
                 <div className="col-span-10 xl:col-span-3 space-y-5">
-                  <h3 className="text-sm font-medium text-muted-foreground mb-6">Key Metrics</h3>
+                  <h3 className="text-sm font-medium text-muted-foreground mb-6">{t.keyMetrics}</h3>
                   <div className="grid grid-cols-3 gap-5">
                     <div className="p-4 rounded-lg max-lg:col-span-3 xl:col-span-3 border">
                       <div className="flex items-center gap-2 mb-2">
                         <TrendingUp className="h-4 w-4 text-primary" />
-                        <span className="text-sm font-medium">Total Customers</span>
+                        <span className="text-sm font-medium">{t.totalCustomers}</span>
                       </div>
                       <div className="text-2xl font-bold">15,847</div>
                       <div className="text-xs text-green-600 flex items-center gap-1 mt-1">
                         <ArrowUpIcon className="h-3 w-3" />
-                        +12.5% from last month
+                        +12.5% {t.fromLastMonth}
                       </div>
                     </div>
 
                     <div className="p-4 rounded-lg max-lg:col-span-3 xl:col-span-3 border">
                       <div className="flex items-center gap-2 mb-2">
                         <Users className="h-4 w-4 text-muted-foreground" />
-                        <span className="text-sm font-medium">Retention Rate</span>
+                        <span className="text-sm font-medium">{t.retentionRate}</span>
                       </div>
                       <div className="text-2xl font-bold">92.4%</div>
                       <div className="text-xs text-green-600 flex items-center gap-1 mt-1">
                         <ArrowUpIcon className="h-3 w-3" />
-                        +2.1% improvement
+                        +2.1% {t.improvement}
                       </div>
                     </div>
 
                     <div className="p-4 rounded-lg max-lg:col-span-3 xl:col-span-3 border">
                       <div className="flex items-center gap-2 mb-2">
                         <Target className="h-4 w-4 text-muted-foreground" />
-                        <span className="text-sm font-medium">Avg. LTV</span>
+                        <span className="text-sm font-medium">{t.avgLtv}</span>
                       </div>
                       <div className="text-2xl font-bold">$2,847</div>
                       <div className="text-xs text-green-600 flex items-center gap-1 mt-1">
                         <ArrowUpIcon className="h-3 w-3" />
-                        +8.3% growth
+                        +8.3% {t.growthLabel}
                       </div>
                     </div>
                   </div>
@@ -166,10 +169,10 @@ export function CustomerInsights() {
               <Table>
                 <TableHeader>
                   <TableRow className="border-b">
-                    <TableHead className="py-5 px-6 font-semibold">Age Group</TableHead>
-                    <TableHead className="text-right py-5 px-6 font-semibold">Customers</TableHead>
-                    <TableHead className="text-right py-5 px-6 font-semibold">Percentage</TableHead>
-                    <TableHead className="text-right py-5 px-6 font-semibold">Growth</TableHead>
+                    <TableHead className="py-5 px-6 font-semibold">{t.ageGroup}</TableHead>
+                    <TableHead className="text-right py-5 px-6 font-semibold">{t.customers}</TableHead>
+                    <TableHead className="text-right py-5 px-6 font-semibold">{t.percentage}</TableHead>
+                    <TableHead className="text-right py-5 px-6 font-semibold">{t.growthLabel}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -188,14 +191,14 @@ export function CustomerInsights() {
             </div>
             <div className="flex items-center justify-end space-x-2 py-6">
               <div className="text-muted-foreground text-sm hidden sm:block">
-                0 of {demographicsData.length} row(s) selected.
+                0 / {demographicsData.length} {t.rowsSelected}
               </div>
               <div className="space-x-2 space-y-2">
                 <Button variant="outline" size="sm" disabled>
-                  Previous
+                  {t.previous}
                 </Button>
                 <Button variant="outline" size="sm" disabled>
-                  Next
+                  {t.next}
                 </Button>
               </div>
             </div>
@@ -207,10 +210,10 @@ export function CustomerInsights() {
               <Table>
                 <TableHeader>
                   <TableRow className="border-b">
-                    <TableHead className="py-5 px-6 font-semibold">Region</TableHead>
-                    <TableHead className="text-right py-5 px-6 font-semibold">Customers</TableHead>
-                    <TableHead className="text-right py-5 px-6 font-semibold">Revenue</TableHead>
-                    <TableHead className="text-right py-5 px-6 font-semibold">Growth</TableHead>
+                    <TableHead className="py-5 px-6 font-semibold">{t.region}</TableHead>
+                    <TableHead className="text-right py-5 px-6 font-semibold">{t.customers}</TableHead>
+                    <TableHead className="text-right py-5 px-6 font-semibold">{t.revenue}</TableHead>
+                    <TableHead className="text-right py-5 px-6 font-semibold">{t.growthLabel}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -229,14 +232,14 @@ export function CustomerInsights() {
             </div>
             <div className="flex items-center justify-end space-x-2 py-6">
               <div className="text-muted-foreground text-sm hidden sm:block">
-                0 of {regionsData.length} row(s) selected.
+                0 / {regionsData.length} {t.rowsSelected}
               </div>
               <div className="space-x-2 space-y-2">
                 <Button variant="outline" size="sm" disabled>
-                  Previous
+                  {t.previous}
                 </Button>
                 <Button variant="outline" size="sm" disabled>
-                  Next
+                  {t.next}
                 </Button>
               </div>
             </div>

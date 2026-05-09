@@ -31,6 +31,9 @@ import { Plus } from "lucide-react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
+import { ja } from "@/i18n/ja"
+
+const t = ja.users
 
 const userFormSchema = z.object({
   name: z.string().min(2, {
@@ -85,14 +88,14 @@ export function UserFormDialog({ onAddUser }: UserFormDialogProps) {
       <DialogTrigger asChild>
         <Button className="cursor-pointer">
           <Plus className="mr-2 h-4 w-4" />
-          Add New User
+          {t.addNewUser}
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-2xl">
         <DialogHeader>
-          <DialogTitle>Add New User</DialogTitle>
+          <DialogTitle>{t.addNewUserTitle}</DialogTitle>
           <DialogDescription>
-            Create a new user account. Click save when you&apos;re done.
+            {t.addNewUserDesc}
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -102,9 +105,9 @@ export function UserFormDialog({ onAddUser }: UserFormDialogProps) {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>{t.name}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter full name" {...field} />
+                    <Input placeholder={t.namePlaceholder} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -115,9 +118,9 @@ export function UserFormDialog({ onAddUser }: UserFormDialogProps) {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>{t.email}</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter email address" {...field} />
+                    <Input placeholder={t.emailPlaceholder} {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -129,11 +132,11 @@ export function UserFormDialog({ onAddUser }: UserFormDialogProps) {
                 name="role"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Role</FormLabel>
+                    <FormLabel>{t.role}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger className="cursor-pointer w-full">
-                          <SelectValue placeholder="Select role" />
+                          <SelectValue placeholder={t.selectRole} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -153,11 +156,11 @@ export function UserFormDialog({ onAddUser }: UserFormDialogProps) {
                 name="plan"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Plan</FormLabel>
+                    <FormLabel>{t.plan}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger className="cursor-pointer w-full">
-                          <SelectValue placeholder="Select plan" />
+                          <SelectValue placeholder={t.selectPlan} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -177,11 +180,11 @@ export function UserFormDialog({ onAddUser }: UserFormDialogProps) {
                 name="billing"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Billing</FormLabel>
+                    <FormLabel>{t.billing}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger className="cursor-pointer w-full">
-                          <SelectValue placeholder="Select billing" />
+                          <SelectValue placeholder={t.selectBilling} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -199,11 +202,11 @@ export function UserFormDialog({ onAddUser }: UserFormDialogProps) {
                 name="status"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Status</FormLabel>
+                    <FormLabel>{t.status}</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
                       <FormControl>
                         <SelectTrigger className="cursor-pointer w-full">
-                          <SelectValue placeholder="Select status" />
+                          <SelectValue placeholder={t.selectStatus} />
                         </SelectTrigger>
                       </FormControl>
                       <SelectContent>
@@ -220,7 +223,7 @@ export function UserFormDialog({ onAddUser }: UserFormDialogProps) {
             </div>
             <DialogFooter>
               <Button type="submit" className="cursor-pointer">
-                Save User
+                {t.saveUser}
               </Button>
             </DialogFooter>
           </form>

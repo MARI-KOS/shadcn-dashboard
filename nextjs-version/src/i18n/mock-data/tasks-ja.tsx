@@ -1,0 +1,50 @@
+import {
+  CheckCircle2,
+  Circle,
+  Clock,
+  PlayCircle,
+} from "lucide-react"
+
+/** タスクカテゴリ（日本語） */
+export const categoriesJa = [
+  { value: "bug",           label: "バグ" },
+  { value: "feature",       label: "機能追加" },
+  { value: "documentation", label: "ドキュメント" },
+  { value: "improvement",   label: "改善" },
+  { value: "refactor",      label: "リファクタリング" },
+]
+
+/** タスクステータス（日本語） */
+export const statusesJa = [
+  { value: "pending",     label: "保留中",   icon: Clock },
+  { value: "todo",        label: "未着手",   icon: Circle },
+  { value: "in progress", label: "進行中",   icon: PlayCircle },
+  { value: "completed",   label: "完了",     icon: CheckCircle2 },
+]
+
+/** タスク優先度（日本語） */
+export const prioritiesJa = [
+  { label: "低",   value: "minor" },
+  { label: "通常", value: "normal" },
+  { label: "重要", value: "important" },
+  { label: "緊急", value: "critical" },
+]
+
+/** タスク一覧（日本語） */
+export const tasksJa = [
+  { id: "TASK-1001", title: "OAuth 2.0プロバイダーによるユーザー認証の実装",          status: "completed",   category: "feature",       priority: "critical" },
+  { id: "TASK-1002", title: "ダッシュボードコンポーネントのメモリリーク修正",            status: "in progress",  category: "bug",           priority: "critical" },
+  { id: "TASK-1003", title: "v2エンドポイントのAPIドキュメント更新",                    status: "todo",         category: "documentation", priority: "important" },
+  { id: "TASK-1004", title: "全UIコンポーネントへのダークモード対応追加",                status: "completed",   category: "feature",       priority: "important" },
+  { id: "TASK-1005", title: "ログイン成功後にリダイレクトされない問題の修正",            status: "in progress",  category: "bug",           priority: "critical" },
+  { id: "TASK-1006", title: "新規ユーザー向けオンボーディングチュートリアルの作成",      status: "pending",      category: "documentation", priority: "normal" },
+  { id: "TASK-1007", title: "ユーザーダッシュボードのデータベースクエリ最適化",          status: "todo",         category: "improvement",   priority: "important" },
+  { id: "TASK-1008", title: "モバイルナビゲーションのレスポンシブ対応修正",              status: "completed",   category: "bug",           priority: "normal" },
+  { id: "TASK-1009", title: "決済ゲートウェイ統合のユニットテスト追加",                  status: "todo",         category: "feature",       priority: "important" },
+  { id: "TASK-1010", title: "コードベースのESLintとPrettierの設定",                     status: "completed",   category: "refactor",      priority: "minor" },
+  { id: "TASK-1011", title: "ユーザーダッシュボード向けリアルタイム通知の実装",          status: "in progress",  category: "feature",       priority: "important" },
+  { id: "TASK-1012", title: "プロフィール画像アップロードのエラーハンドリング修正",       status: "pending",      category: "bug",           priority: "normal" },
+  { id: "TASK-1013", title: "新機能のコンポーネントライブラリドキュメント更新",          status: "todo",         category: "documentation", priority: "normal" },
+  { id: "TASK-1014", title: "チームコラボレーション向けWebSocket接続の最適化",           status: "in progress",  category: "improvement",   priority: "critical" },
+  { id: "TASK-1015", title: "未使用の依存関係と非推奨APIのリファクタリング",             status: "todo",         category: "refactor",      priority: "minor" },
+]

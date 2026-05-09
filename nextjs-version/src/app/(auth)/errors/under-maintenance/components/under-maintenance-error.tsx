@@ -3,9 +3,11 @@
 import { Button } from "@/components/ui/button"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
+import { ja } from "@/i18n/ja"
 
 export function UnderMaintenanceError() {
   const router = useRouter()
+  const t = ja.errors.underMaintenance
 
   return (
     <div className='mx-auto flex min-h-dvh flex-col items-center justify-center gap-8 p-8 md:gap-12 md:p-16'>
@@ -17,13 +19,13 @@ export function UnderMaintenanceError() {
         className='aspect-video w-240 rounded-xl object-cover dark:brightness-[0.95] dark:invert'
       />
       <div className='text-center'>
-        <h1 className='mb-4 text-3xl font-bold'>503</h1>
-        <h2 className="mb-3 text-2xl font-semibold">Under Maintenance</h2>
-        <p>The service is currently unavailable. Please try again later.</p>
+        <h1 className='mb-4 text-3xl font-bold'>{t.code}</h1>
+        <h2 className="mb-3 text-2xl font-semibold">{t.title}</h2>
+        <p>{t.message}</p>
         <div className='mt-6 flex items-center justify-center gap-4 md:mt-8'>
-          <Button className='cursor-pointer' onClick={() => router.push('/dashboard')}>Go Back Home</Button>
+          <Button className='cursor-pointer' onClick={() => router.push('/dashboard')}>{ja.errors.backHome}</Button>
           <Button variant='outline' className='flex cursor-pointer items-center gap-1' onClick={() => router.push('#')}>
-            Contact Us
+            {ja.errors.contactUs}
           </Button>
         </div>
       </div>
